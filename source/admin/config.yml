@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: chenlan7064/chenlan7064.github.io
+  branch: main
+  base_url: https://chenlan7064.github.io
+
+media_folder: "source/images"
+public_folder: "/images"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "source/_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "更新日期", name: "updated", widget: "datetime", required: false }
+      - { label: "标签", name: "tags", widget: "list", required: false }
+      - { label: "分类", name: "categories", widget: "string", required: false }
+      - { label: "封面图", name: "cover", widget: "image", required: false }
+      - { label: "摘要", name: "description", widget: "text", required: false }
+      - { label: "置顶", name: "sticky", widget: "boolean", required: false, default: false }
+      - { label: "正文", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "页面"
+    folder: "source"
+    create: true
+    filter: { field: "layout", value: "page" }
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "正文", name: "body", widget: "markdown" }
+      - { label: "布局", name: "layout", widget: "hidden", default: "page" }
