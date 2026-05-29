@@ -1,4 +1,4 @@
-alternate: testName # 站点大标题
+alternate: Tensika的博客小屋 # 站点大标题
 
 # 封面图片列表（至少需要 6 张）
 images:
@@ -50,7 +50,7 @@ homeConfig:
 # 请关闭所有不使用的模块以优化主题 js 体积和性能
 modules:
   debug: false # 启用调试模式
-  player: true # 启用音乐播放器
+  player: false # 启用音乐播放器（需配合 audio 配置歌单）
   fireworks: true # 启用鼠标点击烟花特效
   visibilityListener: true # 启用可见度监听器，当你不需要页面标题随标签页切换而变化可关闭
   tabs: true # 启用选项卡扩展支持，如需开启 summary 功能请一并开启
@@ -244,7 +244,7 @@ pagefind: # pagefind 本地搜索 https://pagefind.app/
 # Value before `||` delimiter is the target permalink,
 # secend value is the name of Font icon.
 social:
-  github: https://github.com/yourname || github || "#191717"
+  github: https://github.com/chenlan7064 || github || "#191717"
   #gitee: https://gitee.com/yourname || gitee || "#e60026"
   #google: https://plus.google.com/yourname || google
   #twitter: https://twitter.com/yourname || twitter || "#00aff0"
@@ -271,7 +271,7 @@ widgets:
   # if true, will show random posts
   random_posts: true
   # if true, will show recent comments
-  recent_comments: true
+  recent_comments: false  # 需要配置评论系统后开启
 
 footer:
   # Specify the date when the site was set up. If not defined, current year will be used.
