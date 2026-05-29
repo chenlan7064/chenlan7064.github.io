@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: chenlan7064/chenlan7064.github.io
-  branch: main
+  branch: source
   base_url: https://chenlan7064.github.io
 
 media_folder: "source/images"
