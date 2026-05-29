@@ -1,12 +1,24 @@
 // ShokaX 底层修复：页面滚动与底部遮挡
-// 详见 https://github.com/theme-shoka-x/hexo-theme-shokaX/issues
 
-// 1. 始终允许页面滚动（body.loaded 增加 !important 保险）
+// 1. 始终允许页面滚动
 body
   overflow-y: scroll !important
   &.fullscreen
-    overflow: hidden !important  // 全屏模式保持禁止滚动
+    overflow: hidden !important
 
-// 2. 防止 #loading 遮罩残留遮挡底部
+// 2. html 也设为可滚动
+html
+  overflow-y: scroll !important
+
+// 3. 防止 #loading 遮罩残留遮挡
 #loading
   pointer-events: none
+
+// 4. 确保 main 内容区有足够底部间距
+main > .inner
+  padding-bottom: 5rem
+
+// 5. footer 确保在最上层
+#footer
+  position: relative
+  z-index: 1
