@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(curl -sL \"file:///D:/博客/Blog/ShokaX/public/css/page.css\")",
+      "Bash(hexo generate *)",
+      "Bash(curl -sL \"https://chenlan7064.github.io/css/page.css\")",
+      "Bash(hexo clean *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
