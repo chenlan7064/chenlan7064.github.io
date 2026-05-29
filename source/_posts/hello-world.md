@@ -5,7 +5,7 @@ updated: 2026-05-29T23:11:00
 tags:
   - '#Hexo使用'
 categories: '#入门'
-cover: /images/58999babab09c921b5c73b2ffb87affb.jpg
+cover: https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/58999babab09c921b5c73b2ffb87affb.jpg
 description: ''
 sticky: true
 ---
