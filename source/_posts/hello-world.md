@@ -7,7 +7,7 @@ tags:
 categories: '#入门'
 cover: https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/58999babab09c921b5c73b2ffb87affb.jpg
 description: ''
-sticky: true
+sticky: false
 ---
 
 欢迎来到 [Hexo](https://hexo.io/) ! 这是你的第一篇文章。查阅 [文档](https://hexo.io/docs/) 获得更多信息。当你使用Hexo时，假如你有任何问题，你可以在 [troubleshooting](https://hexo.io/docs/troubleshooting.html) 找到解答，或者你也可以访问 [GitHub](https://github.com/hexojs/hexo/issues) 咨询我。
