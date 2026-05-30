@@ -1,7 +1,7 @@
 ---
 title: Claude+deepseek v4安装部署教程
 date: 2026-05-30T11:58:00
-updated: 2026-05-30T11:58:00
+updated: 2026-05-30T20:56:00
 tags:
   - '#VibeCoding'
 categories: '#入门'
