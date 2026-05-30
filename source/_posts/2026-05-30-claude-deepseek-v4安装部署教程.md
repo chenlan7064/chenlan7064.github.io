@@ -74,6 +74,10 @@ Windows 用户需安装 [Git for Windows](https://git-scm.com/download/win)。
 
 `npm install -g @anthropic-ai/claude-code`
 
+> 假如出现`npm : 无法加载文件 D:\Nodejs\node_global\npm.ps1，因为在此系统上禁止运行脚本`的报错，是由于Windows系统中PowerShell的执行策略限制了脚本的执行，而你要执行的文件是一个PowerShell脚本文件，所以默认情况下无法执行。只需要执行以下命令来更改执行策略为RemoteSigned并设置为作用于当前用户即可。
+
+`Set-ExecutionPolicy -Scope CurrentUser`
+
 安装结束后，执行以下命令，若显示版本号则安装成功：
 
 `claude --version`
