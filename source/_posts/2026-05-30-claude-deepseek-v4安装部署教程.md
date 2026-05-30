@@ -5,7 +5,7 @@ updated: 2026-05-30T11:58:00
 tags:
   - '#VibeCoding'
 categories: '#入门'
-cover: '![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/306e43a457d5294bd720e262d4841918.jpg)'
+cover: https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/306e43a457d5294bd720e262d4841918.jpg
 description: ''
 sticky: false
 ---
@@ -39,15 +39,20 @@ Claude Code的能力覆盖软件开发生命周期的多个关键环节，尤其
 1. **极致的成本控制**
 使用原生Claude模型（如Sonnet 4.6）处理大量编程任务成本高昂。而DeepSeek V4系列模型在保持强大性能的同时，价格极具竞争力。一个典型的对比是：处理400万Tokens的编程任务，使用Claude Sonnet 4.6可能需花费约26美元，而使用DeepSeek V4可将成本降低至约2美元，降幅超过90%。
 2. **卓越的技术性能**
+
     - **长上下文支持**：DeepSeek V4支持128K乃至1M Tokens的上下文窗口，非常适合处理大型代码库和复杂项目需求。
     - **扎实的编程基准**：在主流编程基准测试中表现优异，尤其在软件工程、工具调用和浏览器自动化任务上能力突出。
     - **模型可选性**：提供`deepseek-v4-pro`（深度推理）和`deepseek-v4-flash`（轻量快速）两个版本，可根据任务复杂度灵活调度。
+
 3. **无缝的接入体验**
 DeepSeek平台原生支持Anthropic API格式，这意味着无需复杂的代理或中间层即可让Claude Code直接调用。配置仅需两步：
+
     - 设置环境变量，将请求指向DeepSeek的API端点。
     - 在Claude Code的配置文件中指定使用DeepSeek的模型名称。
+
 4. **混合编程范式**
 最实用的策略并非完全用DeepSeek V4替代高端模型，而是**让它们各司其职**。可以构建这样的工作流：
+
     - **DeepSeek V4 作为主力引擎**：处理日常编码、脚本编写、单元测试、基础架构等低风险、高频率任务。
     - **高端模型（如Claude Opus）作为精加工工具**：仅在需要进行复杂架构设计、关键代码审查或深度逻辑推理时调用。
 
@@ -61,7 +66,7 @@ DeepSeek平台原生支持Anthropic API格式，这意味着无需复杂的代�
 
 Windows 用户需安装 [Git for Windows](https://git-scm.com/download/win)。
 
-获取deepseekapi，这里提供两种方式。第一种是前往[deepseek官网](https://platform.deepseek.com)，注册登录账号以后，在左侧选择API keys选项卡，选择创建API keys，生成api，名称可以随便取。密钥目前只在生成时可见，生成以后建议立刻妥善到本地。![](![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260530112740.jpg))
+获取deepseekapi，这里提供两种方式。第一种是前往[deepseek官网](https://platform.deepseek.com)，注册登录账号以后，在左侧选择API keys选项卡，选择创建API keys，生成api，名称可以随便取。密钥目前只在生成时可见，生成以后建议立刻妥善到本地。![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260530112740.jpg)
 
 ### 2.安装Claude Code
 
@@ -110,4 +115,4 @@ claude
 
 成功接入DeepSeek v4后的Claude界面如下所示，接下来只需要用自然语言向Claude提出要求即可，享受你的VibeCoding之旅吧！
 
-![](![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Claude%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg))
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Claude%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg)
