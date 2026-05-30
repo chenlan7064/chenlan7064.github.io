@@ -127,5 +127,5 @@ markdown:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/chenlan7064/chenlan7064.github.io.git
+  repo: git@github.com:chenlan7064/chenlan7064.github.io.git
   branch: main
