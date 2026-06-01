@@ -26,6 +26,8 @@ collections:
       - { label: "封面图", name: "cover", widget: "image", required: false }
       - { label: "摘要", name: "description", widget: "text", required: false }
       - { label: "置顶", name: "sticky", widget: "boolean", required: false, default: false }
+      - { label: "启用数学公式", name: "math", widget: "boolean", required: false, default: false }
+      - { label: "启用Mermaid图表", name: "mermaid", widget: "boolean", required: false, default: false }
       - { label: "正文", name: "body", widget: "markdown" }
 
   - name: "pages"
