@@ -80,4 +80,18 @@ Rec@K：基于top-K检索的召回率指标，对整体不敏感
 
 ## 复现
 
-#### 默认超参数条件
+#### 默认超参数条件+全监督
+
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUROC_boxplot.png)
+
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_boxplot.png)
+
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_Rec%40K_boxplot.png)
+
+#### 实验中遇到的问题
+
+一开始我是打算在本地跑这个实验的，但是本地是5070显卡，论文环境依赖的DGL 官方没有为 Windows 发布 CUDA 12.4+ 版本，而 RTX 5070 又必须用 CUDA 12.4+才支持。两个约束冲突了。我尝试通过WSL来规避这个问题，但依然困难重重，最终还是决定转云平台
+
+由于论文实验环境是48GB显存，而云平台4090是24GB显存，因而在 tfinance上跑HGT时炸显存了，HGT跳过。
+
+DGraph-Fin和T-Social数据集过于庞大，超出承受范围，同样予以跳过。
