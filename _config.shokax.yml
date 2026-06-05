@@ -362,3 +362,9 @@ vendors:
       source: cdnjs
       url: KaTeX/0.16.9/katex.min.css
       sri: "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+
+# ====== 代码块数学公式 ======
+# 启用后，代码块内 $...$ 和 $$...$$ 的 LaTeX 公式会被渲染
+# 自动跳过 shell 变量（$PATH）和金额（$100）
+code_math:
+  enable: true
