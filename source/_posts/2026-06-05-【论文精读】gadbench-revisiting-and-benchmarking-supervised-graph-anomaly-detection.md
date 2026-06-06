@@ -86,11 +86,11 @@ Rec@K：基于top-K检索的召回率指标，对整体不敏感
 
 ![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUROC_barchart.png)
 
-![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_barchart.png)![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_Rec%40K_boxplot.png)
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_barchart.png)![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/AUPRC_boxplot.png)
 
-![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUROC_boxplot.png)
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Rec%40K_boxplot.png)
 
-![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_boxplot.png)
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/AUROC_boxplot.png)
 
 ![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Time_Total.png)
 
