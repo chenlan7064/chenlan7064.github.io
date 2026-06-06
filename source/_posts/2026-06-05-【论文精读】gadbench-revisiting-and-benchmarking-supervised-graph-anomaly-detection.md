@@ -82,11 +82,19 @@ Rec@K：基于top-K检索的召回率指标，对整体不敏感
 
 #### 默认超参数条件+全监督
 
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_Rec%40K_barchart.png)
+
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUROC_barchart.png)
+
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_barchart.png)![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_Rec%40K_boxplot.png)
+
 ![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUROC_boxplot.png)
 
 ![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_boxplot.png)
 
-![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_Rec%40K_boxplot.png)
+![](https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Time_Total.png)
+
+结果分析：在所有模型使用默认超参数，全监督的情况下，采用邻居聚合机制的集成树具有显著优越的性能，XGB-Graph 和 RF-Graph 在所有指标上都持续优于其他比较模型
 
 #### 实验中遇到的问题
 
