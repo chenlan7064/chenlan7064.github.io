@@ -7,7 +7,7 @@ categories: ''
 cover: ''
 description: ''
 sticky: false
-math: true
+math: false
 mermaid: false
 ---
 
