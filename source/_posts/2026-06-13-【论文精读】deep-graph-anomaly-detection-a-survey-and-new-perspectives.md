@@ -82,6 +82,12 @@ mermaid: false
 
 ###### 判别式GNN模型
 
-- 聚合机制：
+- 聚合机制：一个基本原则是设计适合图异常实例的特征聚合（FAG）方案。这一类GAD方法假设图中来自同一类的连接实例具有相似的特征，从中我们可以进行特征聚合，以获得具有判别性的正常/异常模式。一种广泛使用的FAG机制如下
+
+```plain
+$\mathrm{h}_{i}^{(l)}=\sigma\left({\bf W}^{(l)}\left(\mathrm{h}_{i}^{(l-1)}+\mathrm{AGG}\left(\left\{\mathrm{h}_{j}^{(l-1)}\mid o_{j}\in\mathcal{N}_{i}\right\}\right)\right)\right)$
+```
+
+- 
 
 ###### 生成式GNN模型
