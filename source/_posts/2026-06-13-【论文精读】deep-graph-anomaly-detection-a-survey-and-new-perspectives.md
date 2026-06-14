@@ -15,9 +15,11 @@ mermaid: false
 
 ```mermaid
 mindmap
-  root((我的博客))
-    技术栈
-      Hexo
+  root((Deep GAD综述))
+    问题复杂性与挑战
+      主要复杂性
+      	图数据特性
+      		结构依赖性
       ShokaX 主题
       GitHub Pages
       Sveltia CMS
