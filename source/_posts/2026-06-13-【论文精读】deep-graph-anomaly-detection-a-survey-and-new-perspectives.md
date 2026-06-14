@@ -7,7 +7,7 @@ categories: ''
 cover: ''
 description: ''
 sticky: false
-math: false
+math: true
 mermaid: false
 ---
 
@@ -88,6 +88,6 @@ mermaid: false
 $\mathrm{h}_{i}^{(l)}=\sigma\left({\bf W}^{(l)}\left(\mathrm{h}_{i}^{(l-1)}+\mathrm{AGG}\left(\left\{\mathrm{h}_{j}^{(l-1)}\mid o_{j}\in\mathcal{N}_{i}\right\}\right)\right)\right)$
 ```
 
-- 
+- 其中$\mathrm{h}_{i}^{(l)}$是实例i在第l层的特征表示，$\sigma$是激活函数，${\bf W}^{(l)}$是第l层的训练参数。图实例$o_{i}$通常被设置为节点$v_{i}$，而$N_{i}$通常是节点$v_{i}$的1跳邻域。AGG(·)通过求和或平均聚合来实 现，即对邻域特征表示进行求和或平均。更高级的聚合方法，如基于注意力的聚合和LSTM，也被广泛使用 。然而，由于过度平滑表示问题，直接应用这种邻域聚合机制会大幅降低图异常的可区分性，尤其是那些异常行为较为隐蔽的图异常。因此，研究者提出了多种方法，通过多次特征聚合迭代来增强正常与异常图实例的可区分表示。
 
 ###### 生成式GNN模型
