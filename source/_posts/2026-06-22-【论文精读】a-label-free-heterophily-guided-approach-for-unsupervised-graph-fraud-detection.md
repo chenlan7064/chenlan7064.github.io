@@ -41,6 +41,8 @@ GAD是GFD的超集，GAD的一些方法也被应用于GFD，但是相对于通�
 
 ![](/images/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260622195644.jpg)
 
+![](/images/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260623000336.jpg)
+
 四个小数据集（Amazon/Facebook/Reddit/YelpChi）几乎完美复现，偏差 < 0.004
 
 AmazonFull 偏低 \~0.01，原因是把 batch_size 从 8192 降到了 2048——更小的负采样池让 ranking loss 估计略偏保守。这是显存不足的代价
