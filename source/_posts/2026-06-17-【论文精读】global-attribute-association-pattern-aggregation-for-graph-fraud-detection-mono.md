@@ -3,7 +3,7 @@ title: 【论文精读】Global attribute-association pattern aggregation for gr
 date: 2026-06-17T10:50
 updated: ''
 tags: []
-categories: 论文精读
+categories: '#论文精读'
 cover: ''
 description: ''
 sticky: false
