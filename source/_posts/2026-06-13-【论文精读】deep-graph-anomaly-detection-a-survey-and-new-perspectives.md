@@ -3,7 +3,7 @@ title: '【论文精读】Deep graph anomaly detection: A survey and new perspec
 date: 2026-06-13T21:15:00
 updated: ''
 tags: []
-categories: 论文精读
+categories: '#论文精读'
 cover: ''
 description: ''
 sticky: false
