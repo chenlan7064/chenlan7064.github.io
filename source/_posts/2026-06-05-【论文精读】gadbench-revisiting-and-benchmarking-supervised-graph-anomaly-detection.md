@@ -3,7 +3,7 @@ title: '【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph
 date: 2026-06-05T08:58:00
 updated: ''
 tags: []
-categories: ''
+categories: 论文精读
 cover: ''
 description: ''
 sticky: false
