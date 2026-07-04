@@ -61,4 +61,4 @@ RAG的工作流程可以简单划分为四个部分，预处理阶段，收集�
 3. NeighborCheck(NodeID, NeighborType): 返回图中特定节点的邻居信息。
 4. NodeDegree(NodeID, NeighborType): 返回图中指定节点在特定邻居类型下的度数。
 
-本研究的baseline方法包括准LLMs(基础LLMs),文本检索增强LLMs(文本RAG LLMs ),和图检索增强LLMs(图RAG LLMs)，评估指标包括Rouge-L(基于规则，衡量回复与正确答案之间最长公共子序列的词语)和GPT-4score(GPT-4预测为“正确”的百分比)
+本研究的baseline方法包括标准LLMs(基础LLMs),文本检索增强LLMs(文本RAG LLMs ),和图检索增强LLMs(图RAG LLMs)三种，每个baseline类别又分别采用了LLaMA-2-13b-chat、Mixtral-8x7b-Instruct、GPT-3.5-turbo三种LLM骨干。评估指标包括Rouge-L(基于规则，衡量回复与正确答案之间最长公共子序列的词语)和GPT-4score(GPT-4预测为“正确”的百分比)
