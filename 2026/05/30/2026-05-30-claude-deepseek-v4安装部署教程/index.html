@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="My Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="My Blog" href="https://chenlan7064.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-TPOTXWTU.js"></link><link rel="modulepreload" href="/js/copy-tex-VNKFBXXM.js"></link><link rel="modulepreload" href="/js/post-AL6ZM6FN.js"></link><link rel="modulepreload" href="/js/chunk-WQ2AW3GB.js"></link><link rel="modulepreload" href="/js/index.esm-4IGUKTUL.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-RTVQBU5X.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/306e43a457d5294bd720e262d4841918.jpg" as="image" fetchpriority="high"><meta name="keywords" content="#VibeCoding"/><meta name="description" content="A blog built with Hexo and ShokaX theme"/><link rel="canonical" href="https://chenlan7064.github.io/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>Claude+deepseek v4安装部署教程</title>
+<style>
+  /* ====== 基础：安全兜底色（不支持渐变时也能看清） ====== */
+  .post .md code,
+  .post .article code,
+  .md code {
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.88em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    /* 兜底色——看不支持渐变的浏览器 */
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid rgba(180, 130, 150, 0.25);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* ====== 渐变字：仅在现代浏览器生效 ====== */
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #b88a9a  0%,  #a893b8  8%,  #8faac8 17%,
+          #e8d5e0 25%,  #c9a8b8 33%,  #b0c0d8 42%,
+          #e0c8d4 50%,  #b0c0d8 58%,  #c9a8b8 67%,
+          #e8d5e0 75%,  #8faac8 83%,  #a893b8 92%,
+          #b88a9a 100%),
+        linear-gradient(145deg, #e0b0c0, #c9b8d4, #a8c8e8, #c9b8d4, #e0b0c0);
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+      background-origin: padding-box, border-box;
+    }
+  }
+
+  /* ====== hover：流光旋转 ====== */
+  @keyframes diamond-shift {
+    0%   { background-position: 0% 0%, 0% 0%;   }
+    100% { background-position: 100% 0%, 0% 0%; }
+  }
+
+  .md code:hover {
+    animation: diamond-shift 3s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(180, 140, 170, 0.35),
+      0 2px 8px  rgba(160, 130, 160, 0.2);
+  }
+
+  /* ====== 光点扫过 ====== */
+  .md code::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -60%;
+    width: 35%;
+    height: calc(100% + 2px);
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,0.5) 35%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.5) 65%,
+      transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diamond-glint {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+  }
+
+  .md code:hover::after {
+    opacity: 1;
+    animation: diamond-glint 1.4s ease-in-out infinite;
+  }
+
+  /* ====== 暗色模式 ====== */
+  [data-theme="dark"] .md code,
+  [data-theme="dark"] .post .md code {
+    color: #d0c0f0;
+    background: rgba(30, 25, 40, 0.9);
+    border-color: rgba(140, 120, 200, 0.35);
+    text-shadow:
+      0 0 4px  rgba(180, 160, 220, 0.5),
+      0 0 8px  rgba(140, 180, 220, 0.3);
+  }
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    [data-theme="dark"] .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #c0b0e0  0%,  #90c8e8  8%,  #e8d8ff 17%,
+          #a8c8e8 25%,  #c8b8e8 33%,  #e0d0f0 42%,
+          #ffffff 50%,  #e0d0f0 58%,  #c8b8e8 67%,
+          #a8c8e8 75%,  #e8d8ff 83%,  #90c8e8 92%,
+          #c0b0e0 100%),
+        linear-gradient(145deg, rgba(120,100,180,0.5), rgba(80,150,200,0.5), rgba(150,100,180,0.5));
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+    }
+  }
+
+  [data-theme="dark"] .md code:hover {
+    box-shadow:
+      0 0 2px  rgba(160, 140, 220, 0.5),
+      0 0 10px rgba(120, 160, 210, 0.35);
+    text-shadow:
+      0 0 6px  rgba(200, 180, 240, 0.8),
+      0 0 14px rgba(160, 200, 240, 0.5);
+  }
+
+  [data-theme="dark"] .md code::after {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(200,180,255,0.3) 35%,
+      rgba(220,200,255,0.65) 50%,
+      rgba(200,180,255,0.3) 65%,
+      transparent 100%);
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.2"><style>body{overflow-y:scroll!important}body.fullscreen{overflow:hidden!important}#loading{pointer-events:none}footer#footer{position:relative!important;z-index:2!important}main{padding-bottom:3rem!important}</style></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">Claude+deepseek v4安装部署教程</h1><div class="meta"><span class="item" title="创建时间：2026-05-30 11:58:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-05-30T11:58:00+08:00">2026-05-30</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>4.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>4 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Tensika的博客小屋</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/306e43a457d5294bd720e262d4841918.jpg" loading="eager" decoding="async" fetchpriority="high" alt="My Blog"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/%E5%85%A5%E9%97%A8/" itemprop="item" rel="index" title="分类于#入门"><span itemprop="name">#入门<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://chenlan7064.github.io/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="Blogger"/><meta itemprop="description" content="Powered by ShokaX, A blog built with Hexo and ShokaX theme"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="My Blog"/></span><div class="body md" itemprop="articleBody"><h2 id="1为什么要安装claude"><a class="anchor" href="#1为什么要安装claude">#</a> 1.为什么要安装Claude？</h2>
+<p>Claude Code并非一个单一的AI模型，而是一个<strong>专为开发者设计的AI编程助手（Agent）</strong>。它的核心价值在于将自然语言指令转化为具体的开发行动，其安装意义主要体现在：</p>
+<ul>
+<li><strong>工程化思维</strong>：它擅长理解复杂的项目上下文，能进行架构设计、代码重构和系统性思考，而不仅仅是生成代码片段。</li>
+<li><strong>自动化工作流</strong>：Claude Code可以执行一系列连贯的任务，例如创建项目脚手架、运行测试、调试代码、生成文档等，模拟一个初级开发者的完整工作流程。</li>
+<li><strong>深度集成</strong>：作为命令行工具，它能与本地开发环境深度交互，直接操作文件系统，提供更贴近实际编程的辅助体验。</li>
+</ul>
+<p>简单来说，安装Claude Code是为了获得一个具备<strong>工程化思维和自动化执行能力</strong>的AI编程伙伴。</p>
+<h2 id="2claude-code能干什么"><a class="anchor" href="#2claude-code能干什么">#</a> 2.Claude Code能干什么？</h2>
+<p>Claude Code的能力覆盖软件开发生命周期的多个关键环节，尤其适合高频使用命令行的开发者（如运维、后端、全栈工程师）。其主要应用场景包括：</p>
+<ul>
+<li><strong>项目初始化与架构设计</strong>：快速生成符合最佳实践的项目结构，为React、Vue、微服务等应用提供初始蓝图。</li>
+<li><strong>核心编码与调试</strong>：根据需求描述生成高质量、可运行的代码，并能够诊断和修复代码中的错误。</li>
+<li><strong>代码审查与重构</strong>：分析现有代码，提出优化建议，并执行安全、可控的重构操作。</li>
+<li><strong>生成测试用例与文档</strong>：自动编写单元测试、集成测试，并生成清晰的技术文档或API说明。</li>
+<li><strong>自动化部署与脚本编写</strong>：协助完成部署流程的自动化，编写运维脚本和日常自动化任务。</li>
+</ul>
+<p>许多开发者的实践反馈表明，一个配置得当的Claude Code已经能够丝滑地处理日常开发中的大部分任务。本博客的搭建配置就是完全由Claude Code所完成的</p>
+<h2 id="3为什么选择deepseek-v4作为接入后端"><a class="anchor" href="#3为什么选择deepseek-v4作为接入后端">#</a> 3.为什么选择DeepSeek V4作为接入后端？</h2>
+<p>虽然Claude Code设计之初适配Anthropic自家的模型（如Opus、Sonnet），但将其后端切换至DeepSeek V4是一个极具成本效益和实用性的策略。主要原因如下：</p>
+<ol>
+<li>
+<p><strong>极致的成本控制</strong><br />
+使用原生Claude模型（如Sonnet 4.6）处理大量编程任务成本高昂。而DeepSeek V4系列模型在保持强大性能的同时，价格极具竞争力。一个典型的对比是：处理400万Tokens的编程任务，使用Claude Sonnet 4.6可能需花费约26美元，而使用DeepSeek V4可将成本降低至约2美元，降幅超过90%。</p>
+</li>
+<li>
+<p><strong>卓越的技术性能</strong></p>
+<ul>
+<li><strong>长上下文支持</strong>：DeepSeek V4支持128K乃至1M Tokens的上下文窗口，非常适合处理大型代码库和复杂项目需求。</li>
+<li><strong>扎实的编程基准</strong>：在主流编程基准测试中表现优异，尤其在软件工程、工具调用和浏览器自动化任务上能力突出。</li>
+<li><strong>模型可选性</strong>：提供<code>deepseek-v4-pro</code>（深度推理）和<code>deepseek-v4-flash</code>（轻量快速）两个版本，可根据任务复杂度灵活调度。</li>
+</ul>
+</li>
+<li>
+<p><strong>无缝的接入体验</strong><br />
+DeepSeek平台原生支持Anthropic API格式，这意味着无需复杂的代理或中间层即可让Claude Code直接调用。配置仅需两步：</p>
+<ul>
+<li>设置环境变量，将请求指向DeepSeek的API端点。</li>
+<li>在Claude Code的配置文件中指定使用DeepSeek的模型名称。</li>
+</ul>
+</li>
+<li>
+<p><strong>混合编程范式</strong><br />
+最实用的策略并非完全用DeepSeek V4替代高端模型，而是<strong>让它们各司其职</strong>。可以构建这样的工作流：</p>
+<ul>
+<li><strong>DeepSeek V4 作为主力引擎</strong>：处理日常编码、脚本编写、单元测试、基础架构等低风险、高频率任务。</li>
+<li><strong>高端模型（如Claude Opus）作为精加工工具</strong>：仅在需要进行复杂架构设计、关键代码审查或深度逻辑推理时调用。</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结而言</strong>，安装Claude Code是为了获得一个工程化的AI编程代理；而选择接入DeepSeek V4，则是在确保核心能力不受重大影响的前提下，实现成本的大幅优化和资源的智能调度，从而打造一个真正高效、实用的个人AI开发环境。</p>
+<h2 id="4如何安装claude"><a class="anchor" href="#4如何安装claude">#</a> 4.如何安装Claude</h2>
+<h3 id="1前置准备"><a class="anchor" href="#1前置准备">#</a> 1.前置准备</h3>
+<p>安装Node.js 18+,详情参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/442215189">node.js安装及环境配置超详细教程【Windows系统安装包方式】</a></p>
+<p>Windows 用户需安装 <a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git for Windows</a>。</p>
+<p>获取deepseekapi，这里提供两种方式。第一种是前往<a target="_blank" rel="noopener" href="https://platform.deepseek.com">deepseek官网</a>，注册登录账号以后，在左侧选择API keys选项卡，选择创建API keys，生成api，名称可以随便取。密钥目前只在生成时可见，生成以后建议立刻妥善到本地。<img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260530112740.jpg" alt="" /></p>
+<h3 id="2安装claude-code"><a class="anchor" href="#2安装claude-code">#</a> 2.安装Claude Code</h3>
+<p>在命令行界面，执行以下命令安装 Claude Code：</p>
+<p><code>npm install -g @anthropic-ai/claude-code</code></p>
+<blockquote>
+<p>假如出现<code>npm : 无法加载文件 D:\Nodejs\node_global\npm.ps1，因为在此系统上禁止运行脚本</code>的报错，是由于Windows系统中PowerShell的执行策略限制了脚本的执行，而你要执行的文件是一个PowerShell脚本文件，所以默认情况下无法执行。只需要执行以下命令来更改执行策略为RemoteSigned并设置为作用于当前用户即可。</p>
+</blockquote>
+<p><code>Set-ExecutionPolicy -Scope CurrentUser</code></p>
+<p>安装结束后，执行以下命令，若显示版本号则安装成功：</p>
+<p><code>claude --version</code></p>
+<h3 id="3配置环境变量"><a class="anchor" href="#3配置环境变量">#</a> 3.配置环境变量</h3>
+<p>Linux / Mac 用户执行以下命令配置 <a target="_blank" rel="noopener" href="https://api.deepseek.com/anthropic">DeepSeek Anthropic API</a> 环境变量，其中 API Key 在 <a target="_blank" rel="noopener" href="https://platform.deepseek.com/api_keys">DeepSeek Platform</a> 获取：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-plain"><span class="line"><span>export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic</span></span>
+<span class="line"><span>export ANTHROPIC_AUTH_TOKEN=&#x3C;你的 DeepSeek API Key></span></span>
+<span class="line"><span>export ANTHROPIC_MODEL=deepseek-v4-pro[1m]</span></span>
+<span class="line"><span>export ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-v4-pro[1m]</span></span>
+<span class="line"><span>export ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-v4-pro[1m]</span></span>
+<span class="line"><span>export ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-v4-flash</span></span>
+<span class="line"><span>export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash</span></span>
+<span class="line"><span>export CLAUDE_CODE_EFFORT_LEVEL=max</span></span></code></pre>
+<p>Windows用户在powershell执行以下命令：</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-plain"><span class="line"><span>$env:ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"</span></span>
+<span class="line"><span>$env:ANTHROPIC_AUTH_TOKEN="&#x3C;你的 DeepSeek API Key>"</span></span>
+<span class="line"><span>$env:ANTHROPIC_MODEL="deepseek-v4-pro[1m]"</span></span>
+<span class="line"><span>$env:ANTHROPIC_DEFAULT_OPUS_MODEL="deepseek-v4-pro[1m]"</span></span>
+<span class="line"><span>$env:ANTHROPIC_DEFAULT_SONNET_MODEL="deepseek-v4-pro[1m]"</span></span>
+<span class="line"><span>$env:ANTHROPIC_DEFAULT_HAIKU_MODEL="deepseek-v4-flash"</span></span>
+<span class="line"><span>$env:CLAUDE_CODE_SUBAGENT_MODEL="deepseek-v4-flash"</span></span>
+<span class="line"><span>$env:CLAUDE_CODE_EFFORT_LEVEL="max"</span></span></code></pre>
+<p>进入项目目录，执行 <code>claude</code> 命令，即可开始使用了。注意，必须和上面的操作在同一个终端执行，每次启动claude，都需要重新执行一遍以上环境变量配置，因而建议让Claude写一个脚本，实现自动配置启动</p>
+<pre class="shiki shiki-themes vitesse-light vitesse-dark" style="background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee" tabindex="0"><code class="language-plain"><span class="line"><span>cd /path/to/my-project</span></span>
+<span class="line"><span>claude</span></span></code></pre>
+<p>成功接入DeepSeek v4后的Claude界面如下所示，接下来只需要用自然语言向Claude提出要求即可，享受你的VibeCoding之旅吧！</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Claude%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg" alt="" /></p>
+<div class="tags"><a href="/tags/VibeCoding/" rel="tag"><i class="ic i-tag"></i>#VibeCoding</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-05-30 20:56:00" itemprop="dateModified" datetime="2026-05-30T20:56:00+08:00">2026-05-30</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" src="/assets/wechatpay.png" alt="Blogger 微信支付"/><p>微信支付</p></div><div><img loading="lazy" src="/assets/alipay.png" alt="Blogger 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>Blogger<i class="ic i-at"><em>@</em></i>My Blog</li><li class="link"><strong>本文链接：</strong><a href="https://chenlan7064.github.io/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/" title="Claude+deepseek v4安装部署教程">https://chenlan7064.github.io/2026/05/30/2026-05-30-claude-deepseek-v4安装部署教程/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2026/05/29/hello-world/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;chenlan7064&#x2F;Picbed_PicGo&#x2F;main&#x2F;img&#x2F;58999babab09c921b5c73b2ffb87affb.jpg" title="Hello World"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>#入门</span><h3>Hello World</h3></a></div><div class="item right"><a href="/2026/06/01/2026-06-01-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E9%9A%8F%E7%AC%94/" rel="next" itemprop="url" data-background-image="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;chenlan7064&#x2F;Picbed_PicGo&#x2F;main&#x2F;img&#x2F;vermillion.png" title="线性代数随笔"><span class="type">下一篇</span><h3>线性代数随笔</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%89%E8%A3%85claude"><span class="toc-number">1.</span> <span class="toc-text"> 1.为什么要安装Claude？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2claude-code%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-number">2.</span> <span class="toc-text"> 2.Claude Code能干什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9deepseek-v4%E4%BD%9C%E4%B8%BA%E6%8E%A5%E5%85%A5%E5%90%8E%E7%AB%AF"><span class="toc-number">3.</span> <span class="toc-text"> 3.为什么选择DeepSeek V4作为接入后端？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85claude"><span class="toc-number">4.</span> <span class="toc-text"> 4.如何安装Claude</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87"><span class="toc-number">4.1.</span> <span class="toc-text"> 1.前置准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E5%AE%89%E8%A3%85claude-code"><span class="toc-number">4.2.</span> <span class="toc-text"> 2.安装Claude Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.3.</span> <span class="toc-text"> 3.配置环境变量</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2026/05/29/hello-world/" rel="bookmark" title="Hello World">Hello World</a></li><li  class="active"><a href="/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/" rel="bookmark" title="Claude+deepseek v4安装部署教程">Claude+deepseek v4安装部署教程</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Blogger" src="/assets/avatar.jpg"/><p class="name" itemprop="name">Blogger</p><div class="description" itemprop="description">A blog built with Hexo and ShokaX theme</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">26</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/chenlan7064" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;chenlan7064"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2026/06/01/2026-06-01-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E9%9A%8F%E7%AC%94/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2026/05/29/hello-world/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/">【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/">【数理基础】推荐阅读书目</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/">【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/01/2026-06-01-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E9%9A%8F%E7%AC%94/">线性代数随笔</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/">实用工具及网站</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/02/2026-06-02-mermaid%E5%9B%BE%E8%A1%A8%E7%A4%BA%E4%BE%8B/">Mermaid图表示例</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/">科研扫盲-BibTex</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/">【论文精读】Deep graph anomaly detection: A survey and new perspectives</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/07/19/2026-07-19-wsl%E7%AE%80%E7%95%A5%E6%8C%87%E5%8D%97/">WSL简略指南</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Blogger @ Tensika的博客小屋</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">46k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">42 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/05/30/2026-05-30-claude-deepseek-v4安装部署教程/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>

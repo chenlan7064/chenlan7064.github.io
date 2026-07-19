@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://chenlan7064.github.io</id>
+    <title>My Blog • Posts by &#34;#区块链&#34; category</title>
+    <link href="https://chenlan7064.github.io" />
+    <updated>2026-07-17T06:02:00.000Z</updated>
+    <category term="#VibeCoding" />
+    <category term="#Hexo使用" />
+    <entry>
+        <id>https://chenlan7064.github.io/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/</id>
+        <title>Tron波场链入门</title>
+        <link rel="alternate" href="https://chenlan7064.github.io/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/"/>
+        <content type="html">&lt;h2 id=&#34;基础概念扫盲&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#基础概念扫盲&#34;&gt;#&lt;/a&gt; 基础概念扫盲&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;智能合约&lt;/strong&gt;：一段代码 + 一个数据库，部署在链上，自动运行，没人能改。USDT 合约部署后，连 Tether 公司自己都不能偷偷改你的余额。类比来说，智能合约就像是一台自动售货机，只要投入硬币就能获取可乐，没有人站在售货机后操作（没有中心化的后台管理），机器按写死的规则自动执行。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;共识协议&lt;/strong&gt;：决定谁来记账，避免链上节点数据不一致的方案。以TRON链采用的&lt;strong&gt;DPoS共识&lt;/strong&gt;为例，所有持币者投票选出27个“记账员”（超级代表SR），只有这27个人轮流记账（每3s一次，每次产生一个新的区块），其他几千个节点只是复制结果（拼公信度）。DPoS的去中心化程度远不如PoW，但是牺牲了去中心化程度换来了出块速度的提高与耗电量的降低。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;比特币PoW：谁先算出一道数学题谁记（拼算力）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以太坊PoS：谁质押的钱多随机抽选谁记（拼资金）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;代币&lt;/strong&gt;：链上交易的“钱”，可以划分为&lt;strong&gt;原生币&lt;/strong&gt;与&lt;strong&gt;合约代币&lt;/strong&gt;。原生币在设计链时就存在，是链已经写好的底层机制，转账时只需要修改字段。合约代币是一段后来写的代码维护的代币，转账时需要执行合约程序。TRX和TRC-10（也叫 Asset）均为TRON的原生代币，TRC-20则为现在TRON主流的合约代币标准，如&lt;strong&gt;USDT&lt;/strong&gt;就是TRC-20的代币。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TRON 链&lt;/strong&gt;是一个基于 DPoS 共识的智能合约公链，定位是&amp;quot;去中心化互联网基础设施&amp;quot;。架构上高度对标以太坊但做了三件事不同：共识机制、资源模型、账户体系。&lt;/p&gt;
+&lt;p&gt;共识机制上面已经有介绍&lt;/p&gt;
+&lt;p&gt;TRON 采用账户模型（同以太坊，非 UTXO），地址格式：T9zG1...（Base58，T 开头，34 字符）底层是 21 字节：0x41 + 20 字节公钥哈希。账户需要激活才能用。 新地址不是凭空存在的——必须有人给它转一笔 TRX（或代币）链上才会创建这个账户。激活费约 1 TRX&lt;/p&gt;
+&lt;p&gt;资源模型上，TRON 把 Gas 拆成了两个独立的资源池：Bandwidth和Energy。通过质押（冻结）TRX，可以换取这两种资源。Bandwidth可以用于原生币转账，每日有600点免费额度，Energy可以用于合约代币转账，每日没有免费额度。当资源额度不足时，均会消耗TRX，其中合约代币的合约越复杂，Energy消耗的TRX越多。&lt;/p&gt;
+&lt;h2 id=&#34;配置wallet-cli&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置wallet-cli&#34;&gt;#&lt;/a&gt; 配置Wallet-cli&lt;/h2&gt;
+&lt;h4 id=&#34;下载-wallet-cli&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#下载-wallet-cli&#34;&gt;#&lt;/a&gt; 下载 Wallet-cli&lt;/h4&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;git clone https://github.com/tronprotocol/wallet-cli.git&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;编辑位于-srcmainresources-目录下的-configconf-配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编辑位于-srcmainresources-目录下的-configconf-配置文件&#34;&gt;#&lt;/a&gt; 编辑位于 src/main/resources 目录下的 config.conf 配置文件&lt;/h4&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;net {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt; type = mainnet&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;fullnode = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  ip.list = [&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    &#34;fullnode ip : port&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  ]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#soliditynode = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#&lt;/span&gt;&lt;span&gt;  //The IPs in this list can only be totally set to solidity.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#  ip.list = [&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#     &#34;ip : solidity port&#34;&lt;/span&gt;&lt;span&gt; // default solidity&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#  ]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#&lt;/span&gt;&lt;span&gt;  // NOTE: solidity node is optional&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;#}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# open ledger debug&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# ledger_debug = true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# To use the lock and unlock function of the login account, it is necessary to configure&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# lockAccount = true in the config.conf. The current login account is locked, which means that&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# signatures and transactions are not allowed. After the current login account is locked, it can be&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# unlocked. By default, it will be unlocked again after 300 seconds. Unlocking can specify&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# parameters in seconds.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# lockAccount = true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# To use the gasfree feature, please first apply for an APIkey and apiSecret.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# For details, please refer to&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# https://docs.google.com/forms/d/e/1FAIpQLSc5EB1X8JN7LA4SAVAG99VziXEY6Kv6JxmlBry9rUBlwI-GaQ/viewform&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;gasfree = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  mainnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;     apiKey = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;     apiSecret = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  testnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;     apiKey = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;     apiSecret = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# If gRPC requests on the main network are limited in speed, you can apply for an apiKey of Trongrid to improve the user experience&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;grpc = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  mainnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    apiKey = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# Set the maximum number of transactions and backup records that can be retained&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;maxRecords = 1000&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# To use the tronlink multi-sign feature, please first apply for an secretId and secretKey.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# For details, please refer to&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# https://docs.google.com/forms/d/e/1FAIpQLSc5EB1X8JN7LA4SAVAG99VziXEY6Kv6JxmlBry9rUBlwI-GaQ/viewform&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# If you prefer not to apply, a speed-limited secretId and secretKey will be provided for use: &lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;# secretId = &#34;TEST&#34;, secretKey = &#34;TESTTESTTEST&#34;, channel = &#34;test&#34;.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;tronlink = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  mainnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretId = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretKey = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    channel = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  testnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretId = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretKey = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    channel = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;net.type 这个字段只是个摆设（兼容旧版），钱包实际连哪个网，完全由节点 IP 决定，不是由 net.type 决定&lt;/li&gt;
+&lt;li&gt;fullnode 是钱包连接的全节点 gRPC 地址。所有写操作（转账、部署合约、广播交易）都走这个节点。这是必配项，没有它钱包无法工作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;配置格式&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;hocon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;fullnode = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  ip.list = [&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    &#34;grpc.nile.trongrid.io:50051&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  ]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;值是 HOCON 数组格式，[ ] 包裹，引号内是 host:port&lt;/li&gt;
+&lt;li&gt;port 通常是 50051（gRPC 端口）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;多个 IP 会怎样？&lt;/p&gt;
+&lt;p&gt;只有第一个生效。 源码里 Utils.getNode() 调了 getStringList() 但只取 get(0)：&lt;/p&gt;
+&lt;p&gt;List&amp;lt;String&amp;gt; nodeList = config.getStringList(path);&lt;/p&gt;
+&lt;p&gt;return nodeList.get(0);  // 只取第一个，其余忽略&lt;/p&gt;
+&lt;p&gt;没有负载均衡，没有自动故障切换。想换节点必须改配置重启，或用交互命令 SwitchNetwork 运行时切换。&lt;/p&gt;
+&lt;p&gt;代码里的模式：有 solidity （可选）就用它查，没有就退回用 fullnode 查&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;soliditynode是只读专用节点，可选，查询吞吐更快。若没有配置则查询退化到fullnode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常见地址：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://grpc.nile.trongrid.io&#34;&gt;grpc.nile.trongrid.io&lt;/a&gt;：Nile测试网&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://grpc.shasta.trongrid.io&#34;&gt;grpc.shasta.trongrid.io&lt;/a&gt;：Shasta 测试网&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://grpc.trongrid.io&#34;&gt;grpc.trongrid.io&lt;/a&gt;：主网&lt;/p&gt;
+&lt;p&gt;50051：fullnode端口&lt;/p&gt;
+&lt;p&gt;50061：soliditynode端口&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ledger_debug：跟绝大多数用户无关。 这是给 Ledger 硬件钱包用的调试开关。开启后，Ledger 硬件钱包相关的所有操作会在控制台打印详细日志&lt;/li&gt;
+&lt;li&gt;lockAccount：默认false， 一个安全开关。 控制钱包的私钥是&amp;quot;每次签名才输密码加载、用完即弃&amp;quot;还是&amp;quot;解锁后暂存内存一段时间、期间免密签名&amp;quot;。&lt;/li&gt;
+&lt;li&gt;GasFree：免 Gas 转账服务。 第三方帮你付 TRX 手续费，你用 USDT 转账时可以零 TRX 余额。正常发 USDT 需要 TRX 当燃料费（Bandwidth/Energy），新手经常卡在&amp;quot;有 USDT 但没 TRX 转不出去&amp;quot;。GasFree就是解决这个痛的——服务商代付 Gas，你只需对一条消息做链下签名，不用发链上交易。&lt;/li&gt;
+&lt;li&gt;gRPC：两台机器之间的通信协议，用来与TRON节点对话。长连接复用，数据格式为二进制 Protobuf。前面的50051 和 50061 都是 gRPC 端口。主网请求频繁时会被限速，去 &lt;a href=&#34;https://www.trongrid.io/&#34;&gt;trongrid.io &lt;/a&gt;申请免费 API Key 填入该字段&lt;/li&gt;
+&lt;li&gt;maxRecords：控制你本地保存多少条操作记录。超出就自动删最旧的。交易记录文件里一行一条，CSV 格式：txid, 类型, 发送方, 接收方, 金额, 时间, 备注, 节点地址&lt;/li&gt;
+&lt;li&gt;tronlink：多签协调服务——一个交易需要多个人签名才生效，TronLink 服务器帮你协调这些人排队签名。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;配置格式&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;hocon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;tronlink = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  mainnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretId = &#34;&#34;      # 身份标识&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretKey = &#34;&#34;     # HMAC 签名密钥&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    channel = &#34;&#34;       # 来源渠道（如 &#34;chrome-extension&#34;）&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  testnet = {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretId = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    secretKey = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;    channel = &#34;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;  }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;运行web-wallet&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#运行web-wallet&#34;&gt;#&lt;/a&gt; 运行web wallet&lt;/h4&gt;
+&lt;p&gt;编译并运行web wallet&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;cd wallet-cli&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;./gradlew build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;cd build/libs&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;java -jar wallet-cli.jar #启动一个 wallet-cli 实例&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;执行./gradlew build时，假如下载过慢，可以在项目根目录的 gradle/wrapper/gradle-wrapper.properties 里把下载地址换成腾讯云镜像：distributionUrl=https://mirrors.cloud.tencent.com/gradle/gradle-7.6-bin.zip&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本地Java版本要求JDK8，过高版本会构筑失败。同时，安装JDK8以后需要设置JAVA_HOME环境变量，值为bin文件夹所在目录&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;真倒霉，写这个指南时仓库发生更新了，而且新版本好像有点问题。旧版本的根目录现在在新版本的java目录下，然后wallet-cli\java\src\test\java\org\tron\walletcli\cli\StandardCliRunnerTest.java的378行写死了硬编码的ok\n（LF），但windows上会产生ok\r\n（CRLF），导致构建失败。解决方案就是&amp;quot;ok\n&amp;quot; → &amp;quot;ok&amp;quot; + System.lineSeparator()。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;接下来参考&lt;a href=&#34;https://tronprotocol.github.io/documentation-zh/getting_started/getting_started_with_javatron/#b&#34;&gt;入门-java-TRON&lt;/a&gt;即可&lt;/p&gt;
+</content>
+        <updated>2026-07-17T06:02:00.000Z</updated>
+    </entry>
+</feed>

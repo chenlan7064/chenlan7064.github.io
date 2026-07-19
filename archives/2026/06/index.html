@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="My Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="My Blog" href="https://chenlan7064.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-TPOTXWTU.js"></link><link rel="modulepreload" href="/js/copy-tex-VNKFBXXM.js"></link><link rel="modulepreload" href="/js/post-AL6ZM6FN.js"></link><link rel="modulepreload" href="/js/chunk-WQ2AW3GB.js"></link><link rel="modulepreload" href="/js/index.esm-4IGUKTUL.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-RTVQBU5X.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://api.paugram.com/wallpaper/" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=dongman" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=fengjing" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/gqapi/gqapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=fengjing" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/mcapi/mcapi.php" as="image" fetchpriority="high"><meta name="keywords" content="blog, hexo, shokax"/><meta name="description" content="A blog built with Hexo and ShokaX theme"/><link rel="canonical" href="https://chenlan7064.github.io/archives/2026/06/"><link rel="stylesheet" href="/css/page.css?v=0.5.4"><title>2026年/06月归档</title>
+<style>
+  /* ====== 基础：安全兜底色（不支持渐变时也能看清） ====== */
+  .post .md code,
+  .post .article code,
+  .md code {
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.88em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    /* 兜底色——看不支持渐变的浏览器 */
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid rgba(180, 130, 150, 0.25);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* ====== 渐变字：仅在现代浏览器生效 ====== */
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #b88a9a  0%,  #a893b8  8%,  #8faac8 17%,
+          #e8d5e0 25%,  #c9a8b8 33%,  #b0c0d8 42%,
+          #e0c8d4 50%,  #b0c0d8 58%,  #c9a8b8 67%,
+          #e8d5e0 75%,  #8faac8 83%,  #a893b8 92%,
+          #b88a9a 100%),
+        linear-gradient(145deg, #e0b0c0, #c9b8d4, #a8c8e8, #c9b8d4, #e0b0c0);
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+      background-origin: padding-box, border-box;
+    }
+  }
+
+  /* ====== hover：流光旋转 ====== */
+  @keyframes diamond-shift {
+    0%   { background-position: 0% 0%, 0% 0%;   }
+    100% { background-position: 100% 0%, 0% 0%; }
+  }
+
+  .md code:hover {
+    animation: diamond-shift 3s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(180, 140, 170, 0.35),
+      0 2px 8px  rgba(160, 130, 160, 0.2);
+  }
+
+  /* ====== 光点扫过 ====== */
+  .md code::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -60%;
+    width: 35%;
+    height: calc(100% + 2px);
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,0.5) 35%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.5) 65%,
+      transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diamond-glint {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+  }
+
+  .md code:hover::after {
+    opacity: 1;
+    animation: diamond-glint 1.4s ease-in-out infinite;
+  }
+
+  /* ====== 暗色模式 ====== */
+  [data-theme="dark"] .md code,
+  [data-theme="dark"] .post .md code {
+    color: #d0c0f0;
+    background: rgba(30, 25, 40, 0.9);
+    border-color: rgba(140, 120, 200, 0.35);
+    text-shadow:
+      0 0 4px  rgba(180, 160, 220, 0.5),
+      0 0 8px  rgba(140, 180, 220, 0.3);
+  }
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    [data-theme="dark"] .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #c0b0e0  0%,  #90c8e8  8%,  #e8d8ff 17%,
+          #a8c8e8 25%,  #c8b8e8 33%,  #e0d0f0 42%,
+          #ffffff 50%,  #e0d0f0 58%,  #c8b8e8 67%,
+          #a8c8e8 75%,  #e8d8ff 83%,  #90c8e8 92%,
+          #c0b0e0 100%),
+        linear-gradient(145deg, rgba(120,100,180,0.5), rgba(80,150,200,0.5), rgba(150,100,180,0.5));
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+    }
+  }
+
+  [data-theme="dark"] .md code:hover {
+    box-shadow:
+      0 0 2px  rgba(160, 140, 220, 0.5),
+      0 0 10px rgba(120, 160, 210, 0.35);
+    text-shadow:
+      0 0 6px  rgba(200, 180, 240, 0.8),
+      0 0 14px rgba(160, 200, 240, 0.5);
+  }
+
+  [data-theme="dark"] .md code::after {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(200,180,255,0.3) 35%,
+      rgba(220,200,255,0.65) 50%,
+      rgba(200,180,255,0.3) 65%,
+      transparent 100%);
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.2"><style>body{overflow-y:scroll!important}body.fullscreen{overflow:hidden!important}#loading{pointer-events:none}footer#footer{position:relative!important;z-index:2!important}main{padding-bottom:3rem!important}</style></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">发表于"2026年06月"的文章</h1></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Tensika的博客小屋</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" style="background-image: url(&quot;https://api.paugram.com/wallpaper/&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=dongman&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=fengjing&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/gqapi/gqapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=fengjing&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/mcapi/mcapi.php&quot;);"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="collapse wrap"><h2 class="item header"><a href="/archives">全部</a><small>/</small><a href="/archives/2026">2026 年</a><small>/</small>06月<small>归档</small></h2><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-29T10:39:00+08:00" content="2026-06-29">06-29</time></div><div class="title"><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/" itemprop="url"><span itemprop="name">【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-22T23:03:00+08:00" content="2026-06-22">06-22</time></div><div class="title"><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/" itemprop="url"><span itemprop="name">【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-22T13:37:00+08:00" content="2026-06-22">06-22</time></div><div class="title"><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/" itemprop="url"><span itemprop="name">【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-17T10:50:00+08:00" content="2026-06-17">06-17</time></div><div class="title"><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/" itemprop="url"><span itemprop="name">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-14T07:28:00+08:00" content="2026-06-14">06-14</time></div><div class="title"><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/" itemprop="url"><span itemprop="name">【数理基础】推荐阅读书目</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-13T21:16:00+08:00" content="2026-06-13">06-13</time></div><div class="title"><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/" itemprop="url"><span itemprop="name">【实用工具推荐】AI 研究与笔记工具-NotebookLM</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-13T21:15:00+08:00" content="2026-06-13">06-13</time></div><div class="title"><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" itemprop="url"><span itemprop="name">【论文精读】Deep graph anomaly detection: A survey and new perspectives</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-13T18:47:00+08:00" content="2026-06-13">06-13</time></div><div class="title"><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/" itemprop="url"><span itemprop="name">6.14随笔</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-12T14:25:00+08:00" content="2026-06-12">06-12</time></div><div class="title"><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/" itemprop="url"><span itemprop="name">科研扫盲-BibTex</span></a></div></article><article class="item normal" itemscope itemtype="http://schema.org/Article"><div class="meta"><time itemprop="dateCreated" datetime="2026-06-12T14:24:00+08:00" content="2026-06-12">06-12</time></div><div class="title"><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/" itemprop="url"><span itemprop="name">科研扫盲-顶会顶刊</span></a></div></article></div><nav class="pagination"><div class="inner"><span class="page-number current">1</span><a class="page-number" href="/archives/2026/06/page/2/">2</a><a class="extend next" rel="next" href="/archives/2026/06/page/2/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Blogger" src="/assets/avatar.jpg"/><p class="name" itemprop="name">Blogger</p><div class="description" itemprop="description">A blog built with Hexo and ShokaX theme</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">26</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/chenlan7064" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;chenlan7064"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/archives/2026/06/page/2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/">【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/07/19/2026-07-19-wsl%E7%AE%80%E7%95%A5%E6%8C%87%E5%8D%97/">WSL简略指南</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/">【数理基础】推荐阅读书目</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/">【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/02/2026-06-02-mermaid%E5%9B%BE%E8%A1%A8%E7%A4%BA%E4%BE%8B/">Mermaid图表示例</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/07/15/2026-07-15-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-skills-dependency-aware-structural-retrieval-for-massive-agent-skills/">【论文精读】Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/02/2026-06-02-%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86%E9%9A%8F%E7%AC%94/">自动微分随笔</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/">科研扫盲-BibTex</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/">【论文精读】Deep graph anomaly detection: A survey and new perspectives</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Blogger @ Tensika的博客小屋</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">46k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">42 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: false,
+    path: `archives/2026/06/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>

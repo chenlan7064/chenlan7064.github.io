@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://chenlan7064.github.io</id>
+    <title>My Blog • Posts by &#34;#生涯规划&#34; category</title>
+    <link href="https://chenlan7064.github.io" />
+    <updated>2026-07-08T03:08:00.000Z</updated>
+    <category term="#VibeCoding" />
+    <category term="#Hexo使用" />
+    <entry>
+        <id>https://chenlan7064.github.io/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/</id>
+        <title>【生涯规划】硕士三年整体时间线规划</title>
+        <link rel="alternate" href="https://chenlan7064.github.io/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/"/>
+        <content type="html">&lt;p&gt;研一，据说可以直接修完课程&lt;/p&gt;
+&lt;p&gt;目前，主要读了GAD和LLM图推理相关的论文，勉强可以理解和复现，但是做不到掌握代码，也无法改良和自己写&lt;/p&gt;
+&lt;p&gt;毕业要求一篇专利进入实质性审查，不要求论文，但论文可以在评奖评优及实习时有帮助，最好尽可能在实习前弄出一篇论文&lt;/p&gt;
+</content>
+        <updated>2026-07-08T03:08:00.000Z</updated>
+    </entry>
+</feed>

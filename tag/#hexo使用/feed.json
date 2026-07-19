@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "My Blog • All posts by \"#hexo使用\" tag",
+    "description": "A blog built with Hexo and ShokaX theme",
+    "home_page_url": "https://chenlan7064.github.io",
+    "items": [
+        {
+            "id": "https://chenlan7064.github.io/2026/05/29/hello-world/",
+            "url": "https://chenlan7064.github.io/2026/05/29/hello-world/",
+            "title": "Hello World",
+            "date_published": "2026-05-29T15:11:00.000Z",
+            "content_html": "<p>欢迎来到 <a href=\"https://hexo.io/\">Hexo</a> ! 这是你的第一篇文章。查阅 <a href=\"https://hexo.io/docs/\">文档</a> 获得更多信息。当你使用Hexo时，假如你有任何问题，你可以在 <a href=\"https://hexo.io/docs/troubleshooting.html\">troubleshooting</a> 找到解答，或者你也可以访问 <a href=\"https://github.com/hexojs/hexo/issues\">GitHub</a> 咨询我。</p>\n<h2 id=\"快速开始\"><a class=\"anchor\" href=\"#快速开始\">#</a> 快速开始</h2>\n<h3 id=\"创建一篇新文章\"><a class=\"anchor\" href=\"#创建一篇新文章\">#</a> 创建一篇新文章</h3>\n<pre class=\"shiki shiki-themes vitesse-light vitesse-dark\" style=\"background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee\" tabindex=\"0\"><code class=\"language-plain\"><span class=\"line\"><span>bash</span></span>\n<span class=\"line\"><span>$ hexo new \"My New Post\"</span></span></code></pre>\n<p>更多信息: <a href=\"https://hexo.io/docs/writing.html\">Writing</a></p>\n<h3 id=\"启动服务\"><a class=\"anchor\" href=\"#启动服务\">#</a> 启动服务</h3>\n<pre class=\"shiki shiki-themes vitesse-light vitesse-dark\" style=\"background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee\" tabindex=\"0\"><code class=\"language-plain\"><span class=\"line\"><span>bash</span></span>\n<span class=\"line\"><span>$ hexo server</span></span></code></pre>\n<p>更多信息: <a href=\"https://hexo.io/docs/server.html\">Server</a></p>\n<h3 id=\"生成模板文件\"><a class=\"anchor\" href=\"#生成模板文件\">#</a> 生成模板文件</h3>\n<pre class=\"shiki shiki-themes vitesse-light vitesse-dark\" style=\"background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee\" tabindex=\"0\"><code class=\"language-plain\"><span class=\"line\"><span>bash</span></span>\n<span class=\"line\"><span>$ hexo generate</span></span></code></pre>\n<p>更多信息: <a href=\"https://hexo.io/docs/generating.html\">Generating</a></p>\n<h3 id=\"部署至远程站点\"><a class=\"anchor\" href=\"#部署至远程站点\">#</a> 部署至远程站点</h3>\n<pre class=\"shiki shiki-themes vitesse-light vitesse-dark\" style=\"background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee\" tabindex=\"0\"><code class=\"language-plain\"><span class=\"line\"><span>bash</span></span>\n<span class=\"line\"><span>$ hexo deploy</span></span></code></pre>\n<p>更多信息: <a href=\"https://hexo.io/docs/one-command-deployment.html\">Deployment</a></p>\n",
+            "tags": [
+                "#Hexo使用"
+            ]
+        }
+    ]
+}

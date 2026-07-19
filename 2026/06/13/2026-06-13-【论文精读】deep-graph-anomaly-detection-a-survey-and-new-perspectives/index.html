@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="My Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="My Blog" href="https://chenlan7064.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-TPOTXWTU.js"></link><link rel="modulepreload" href="/js/copy-tex-VNKFBXXM.js"></link><link rel="modulepreload" href="/js/post-AL6ZM6FN.js"></link><link rel="modulepreload" href="/js/chunk-WQ2AW3GB.js"></link><link rel="modulepreload" href="/js/index.esm-4IGUKTUL.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-RTVQBU5X.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://api.ixiaowai.cn/api/api.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/mcapi/mcapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/gqapi/gqapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/api/api.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=fengjing" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=dongman" as="image" fetchpriority="high"><meta name="keywords" content="blog, hexo, shokax"/><meta name="description" content="A blog built with Hexo and ShokaX theme"/><link rel="canonical" href="https://chenlan7064.github.io/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>【论文精读】Deep graph anomaly detection: A survey and new perspectives</title>
+<style>
+  /* ====== 基础：安全兜底色（不支持渐变时也能看清） ====== */
+  .post .md code,
+  .post .article code,
+  .md code {
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.88em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    /* 兜底色——看不支持渐变的浏览器 */
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid rgba(180, 130, 150, 0.25);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* ====== 渐变字：仅在现代浏览器生效 ====== */
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #b88a9a  0%,  #a893b8  8%,  #8faac8 17%,
+          #e8d5e0 25%,  #c9a8b8 33%,  #b0c0d8 42%,
+          #e0c8d4 50%,  #b0c0d8 58%,  #c9a8b8 67%,
+          #e8d5e0 75%,  #8faac8 83%,  #a893b8 92%,
+          #b88a9a 100%),
+        linear-gradient(145deg, #e0b0c0, #c9b8d4, #a8c8e8, #c9b8d4, #e0b0c0);
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+      background-origin: padding-box, border-box;
+    }
+  }
+
+  /* ====== hover：流光旋转 ====== */
+  @keyframes diamond-shift {
+    0%   { background-position: 0% 0%, 0% 0%;   }
+    100% { background-position: 100% 0%, 0% 0%; }
+  }
+
+  .md code:hover {
+    animation: diamond-shift 3s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(180, 140, 170, 0.35),
+      0 2px 8px  rgba(160, 130, 160, 0.2);
+  }
+
+  /* ====== 光点扫过 ====== */
+  .md code::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -60%;
+    width: 35%;
+    height: calc(100% + 2px);
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,0.5) 35%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.5) 65%,
+      transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diamond-glint {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+  }
+
+  .md code:hover::after {
+    opacity: 1;
+    animation: diamond-glint 1.4s ease-in-out infinite;
+  }
+
+  /* ====== 暗色模式 ====== */
+  [data-theme="dark"] .md code,
+  [data-theme="dark"] .post .md code {
+    color: #d0c0f0;
+    background: rgba(30, 25, 40, 0.9);
+    border-color: rgba(140, 120, 200, 0.35);
+    text-shadow:
+      0 0 4px  rgba(180, 160, 220, 0.5),
+      0 0 8px  rgba(140, 180, 220, 0.3);
+  }
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    [data-theme="dark"] .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #c0b0e0  0%,  #90c8e8  8%,  #e8d8ff 17%,
+          #a8c8e8 25%,  #c8b8e8 33%,  #e0d0f0 42%,
+          #ffffff 50%,  #e0d0f0 58%,  #c8b8e8 67%,
+          #a8c8e8 75%,  #e8d8ff 83%,  #90c8e8 92%,
+          #c0b0e0 100%),
+        linear-gradient(145deg, rgba(120,100,180,0.5), rgba(80,150,200,0.5), rgba(150,100,180,0.5));
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+    }
+  }
+
+  [data-theme="dark"] .md code:hover {
+    box-shadow:
+      0 0 2px  rgba(160, 140, 220, 0.5),
+      0 0 10px rgba(120, 160, 210, 0.35);
+    text-shadow:
+      0 0 6px  rgba(200, 180, 240, 0.8),
+      0 0 14px rgba(160, 200, 240, 0.5);
+  }
+
+  [data-theme="dark"] .md code::after {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(200,180,255,0.3) 35%,
+      rgba(220,200,255,0.65) 50%,
+      rgba(200,180,255,0.3) 65%,
+      transparent 100%);
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.2"><style>body{overflow-y:scroll!important}body.fullscreen{overflow:hidden!important}#loading{pointer-events:none}footer#footer{position:relative!important;z-index:2!important}main{padding-bottom:3rem!important}</style></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">【论文精读】Deep graph anomaly detection: A survey and new perspectives</h1><div class="meta"><span class="item" title="创建时间：2026-06-13 21:15:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-06-13T21:15:00+08:00">2026-06-13</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>4.9k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>4 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Tensika的博客小屋</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/api/api.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/mcapi/mcapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/gqapi/gqapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/api/api.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=fengjing&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=dongman&quot;);"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="item" rel="index" title="分类于#论文精读"><span itemprop="name">#论文精读<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://chenlan7064.github.io/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="Blogger"/><meta itemprop="description" content="Powered by ShokaX, A blog built with Hexo and ShokaX theme"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="My Blog"/></span><div class="body md" itemprop="articleBody"><h2 id="gad问题复杂性与挑战"><a class="anchor" href="#gad问题复杂性与挑战">#</a> GAD问题复杂性与挑战</h2>
+<h4 id="主要问题复杂性"><a class="anchor" href="#主要问题复杂性">#</a> 主要问题复杂性</h4>
+<h6 id="来源一图数据本身固有特性"><a class="anchor" href="#来源一图数据本身固有特性">#</a> 来源一：图数据本身固有特性</h6>
+<ul>
+<li><strong>结构依赖性</strong>：图结构的复杂性体现在不同层次的数据中的连通性模式、依赖关系以及影响程度上，这些因素在判断图中是否存在异常现象时起着至关重要的作用。在独立同分布数据中，异常现象是独立于上下文的，而在图中，<strong>异常现象往往取决于某个图数据实例的上下文</strong>，比如某个节点的邻近节点。在一个上下文中，某种异常现象可能被视为正常现象，而在另一个上下文中则可能被视为异常现象。</li>
+<li><strong>图类型多样性</strong>：图的类型很多，各自具有不同的用途和应用场景。根据图是否随时间变化，可以将图分为静态图与动态图两类。此外，还可以根据连接类型将图分为异质连接图与同质连接图。<strong>在一种类型的图中定义异常现象，可能与另一种类型的图有很大差异</strong>。例如，在动态图中，某个特定时间步骤下明显异常的图实例（如节点/边/图），在观察其演变过程时，可能会表现出较强的规律性；同样地，在同质连接图中，某个图实例的异常表现可能与在异质连接图中截然不同。处理各种类型的图需要 GAD 方法根据图的特性调整其学习策略。</li>
+<li><strong>大规模计算开销</strong>：现代应用程序需要处理规模巨大的图数据，这些数据可能包含数百万甚至数十亿的节点和边。例如，在大规模社交网络、金融交易网络、网络环境、用户产品电子商务网络以及引用网络等场景中，都需要处理这样的数据。为了利用全局结构信息来识别异常，必须考虑整个图的结构信息，或者至少涉及大部分结构关系。这里的关键难点在于<strong>如何处理加载如此大规模结构关系数据时的时间和空间复杂性问题</strong>。</li>
+</ul>
+<h6 id="来源二图异常现象"><a class="anchor" href="#来源二图异常现象">#</a> 来源二：图异常现象</h6>
+<ul>
+<li><strong>多级图异常实例</strong>：与其他类型的数据异常检测不同，**图数据中的异常可能来自不同的组成部分，比如节点、边、子图，甚至是整个图结构。**取决于图数据的结构和属性信息，图数据中的异常表现形式也多种多样。因此，需要采用综合性的 GAD 方法来识别节点、边、子图以及整个图结构中存在的异常模式。</li>
+<li><strong>多样化的图异常表现形式</strong>：取决于图的结构信息、属性信息或两者的组合，图异常的表现形式极度多样。如<strong>属性异常</strong>（在图的属性集中表现出异常特征值的实例）、<strong>结构异常</strong>（表现出异常连接模式的实例，例如连接了不同的社区或形成了异常密集的连接）、<strong>上下文异常</strong>（实例本身的属性可能不异常，但与其所属社区的其他节点相比，其属性值存在显著偏差）、<strong>局部亲和力异常</strong>（与其连接实例表现出极弱亲和力的实例）</li>
+</ul>
+<blockquote>
+<p>Addtion：关于<strong>上下文异常</strong>和<strong>局部亲和力异常</strong>，我的理解是上下文异常主要是基于图实例所处的社区模式进行判断，而局部亲和力异常主要是基于图实例直接相联的邻居做出判断。</p>
+</blockquote>
+<h6 id="来源三从通用ad继承并在-gad-中被放大的复杂性"><a class="anchor" href="#来源三从通用ad继承并在-gad-中被放大的复杂性">#</a> 来源三：从通用AD继承并在 GAD 中被放大的复杂性</h6>
+<ul>
+<li><strong>异常未知性</strong>：许多异常在实际发生之前是完全<strong>不可预知</strong>的。这意味着在建模阶段，研究人员无法获得关于这些异常模式的任何先验知识。由于没有“参考样本”，模型很难提前学习到这些未知异常的特征。此外，在同一个图中，不同类型的异常可能表现出截然不同的行为模式，这种<strong>异质性</strong>使得检测变得极其困难：如图属性中的异常（如节点特征值极端）与图结构中的异常（如不寻常的连接模式）表现完全不同、节点集的异常行为与边或子图集的异常行为具有不同的特征、在“1阶局部邻域（1-hop local structure）”表现出的异常，与在“高阶结构上下文（higher-order structural context）”中表现出的异常可能完全不相关。由于上述的异质性，<strong>“已知”并不代表“能推导未知”</strong>。即便模型已经掌握了一种或几种类型的图异常模式，也往往无法泛化（Generalize）到检测其他类型的异常。这直接导致了 GAD 的一个核心挑战：<strong>如何实现对不同图异常的泛化</strong></li>
+<li><strong>数据不平衡问题</strong>：由于异常事件在现实中发生频率极低，导致正常类和异常类之间存在巨大的样本量差距。由于图结构或属性的潜在<strong>长尾分布</strong>特性，这种复杂性在 GAD 中更加明显。具体到模型训练中，由于训练数据中正常实例占据绝对多数，模型在学习过程中会更频繁地接触并感知正常模式，从而产生<strong>偏向多数类的偏见</strong>。模型可能变得过度“专业化”于识别正常实例，而对异常实例的特征捕捉不足，导致在检测异常时<strong>泛化效果极差</strong>。许多方法的预测依赖于检测决策阈值，由于数据极度不平衡，<strong>阈值的微小偏差</strong>都可能导致误报率或漏报率的剧烈波动</li>
+</ul>
+<blockquote>
+<p>Addtion：<strong>长尾分布</strong>，指少数类别或个体（头部）占据了数据中的绝大部分，而大量类别或个体（尾部）虽然各自占比很小，但种类繁多，其总和可能非常可观甚至超过头部。</p>
+</blockquote>
+<ul>
+<li><strong>异常行为伪装</strong>：主要指恶意行为者（Bad actors）为了逃避检测，故意调整其特征或连接行为，使其在局部邻域或全局图中看起来与正常实例相似。主要通过两种操纵手段实现：
+<ul>
+<li><strong>属性操纵（Attribute Manipulation）：</strong> 修改自身的特征属性，使其在特征空间中接近正常节点的分布。</li>
+<li><strong>结构操纵（Structural Manipulation）：</strong> 故意与大量正常节点建立连接。即异常节点有很大可能连接到正常节点，从而掩盖其自身的异常本质</li>
+</ul>
+</li>
+</ul>
+<h4 id="主要挑战"><a class="anchor" href="#主要挑战">#</a> 主要挑战</h4>
+<p>上述问题的复杂性导致了在 GAD 领域存在许多尚未解决的挑战，而深入的 GAD 方法可以在一定程度上解决这些挑战。</p>
+<h6 id="挑战一结构感知与过平滑平衡"><a class="anchor" href="#挑战一结构感知与过平滑平衡">#</a> 挑战一：结构感知与过平滑平衡</h6>
+<p>图异常的出现并非仅仅由它们的属性决定，还受到其结构环境的影响。因此，GAD 方法需要在异常评分函数中有效<strong>捕捉这些结构上的依赖性</strong>。此外，在建模图结构信息时，由于对邻近节点的表示进行迭代聚合来获得目标节点的表示，导致不同节点的表示变得过于相似，会产生**过平滑，**使得正常和异常图实例之间难以区分</p>
+<blockquote>
+<p>Addtion：为什么会产生过平滑？GNN 的核心是通过多层特征聚合（Feature Aggregation）来学习节点表示。在每一层中，目标节点都会收集并整合其邻居节点的信息。随着聚合次数（即模型层数）的增加，每个节点所包含的信息不再仅仅局限于其直接邻居，而是扩展到了更远距离的节点。这意味着在多轮迭代后，图中**很大一部分节点的特征信息都会被相互传播和混合。**当这种聚合不断重复时，原本具有独特属性或结构特征的节点，其表示会逐渐趋向于邻域甚至全图的平均水平。最终，<strong>不同节点的表示会变得过度相似</strong>，从而失去了区分度</p>
+</blockquote>
+<h6 id="挑战二大规模图结构分析能力"><a class="anchor" href="#挑战二大规模图结构分析能力">#</a> 挑战二：大规模图结构分析能力</h6>
+<h6 id="挑战三对不同类型图异常情况的泛化处理"><a class="anchor" href="#挑战三对不同类型图异常情况的泛化处理">#</a> 挑战三：对不同类型图异常情况的泛化处理</h6>
+<p>由于存在<strong>多级图异常实例</strong>与<strong>多样化的图异常表现形式</strong>，因此很难采用一刀切的方法来处理这些异常，需要结合强大的特征提取能力和多样化的检测模型。</p>
+<h6 id="挑战四平衡型-gad"><a class="anchor" href="#挑战四平衡型-gad">#</a> 挑战四：平衡型 GAD</h6>
+<p>由于存在<strong>数据不平衡问题</strong>，因而挑战在于避免产生偏见的全局异常检测结果。</p>
+<h6 id="挑战五鲁棒性与结果可解释性"><a class="anchor" href="#挑战五鲁棒性与结果可解释性">#</a> 挑战五：鲁棒性与结果可解释性</h6>
+<p>鲁棒性是指模型在面对不利条件时维持检测性能的能力，主要涉及以下两个方面：</p>
+<ul>
+<li><strong>对抗异常伪装 (Abnormality Camouflage)：</strong> 恶意行为者会通过操纵属性或结构（例如故意连接大量正常节点），使异常实例在局部邻域或全局图中看起来与正常实例无异。模型必须具备捕捉这些细微差异的能力，防止异常节点的表示被正常邻域“同化”。</li>
+<li><strong>应对异常污染 (Anomaly Contamination)：</strong> 现有的无监督方法通常在包含异常的“污染”数据上训练。这些异常实例会干扰 GNN 的消息传递过程，导致学到的表示偏离正常的统计分布。目前的应对策略包括使用截断图数据训练或利用少量已知的正常样本进行半监督学习。</li>
+</ul>
+<p>可解释性是指模型不仅要能检测出异常，还要解释_为什么_该实例被判定为异常。</p>
+<ul>
+<li><strong>应用需求：</strong> 在银行欺诈检测等关键领域，解释至关重要。调查人员需要知道欺诈行为具体关联到了哪些交易属性、哪些节点间的关系以及发生在哪个时间段。</li>
+</ul>
+<h2 id="gad技术分类体系"><a class="anchor" href="#gad技术分类体系">#</a> GAD技术分类体系</h2>
+<p>该综述提出了深度 GAD 分类体系的总体框架，从三个宏观层面和 13 个细粒度技术角度进行了划分。如下图所示</p>
+<p><img loading="lazy" src="/images/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260614100154.jpg" alt="" /></p>
+<h4 id="gnn框架设计"><a class="anchor" href="#gnn框架设计">#</a> GNN框架设计</h4>
+<p>专注于改进图神经网络（GNN）以学习更具判别力的表示</p>
+<h6 id="判别式gnn模型"><a class="anchor" href="#判别式gnn模型">#</a> 判别式GNN模型</h6>
+<ul>
+<li><strong>聚合机制</strong>：一个基本原则是设计适合图异常实例的特征聚合（FAG）方案。这一类GAD方法假设图中来自同一类的连接实例具有相似的特征，从中我们可以进行特征聚合，以获得具有判别性的正常/异常模式。一种广泛使用的FAG机制如下</li>
+</ul>
+<p>{h}_{i}^{(l)}=\sigma\left(W^{(l)}\left({h}_{i}^{(l-1)}+{AGG}\left(\left{{h}_{j}^{(l-1)}\mid o_{j}\in{N}_{i}\right}\right)\right)\right)</p>
+<pre><code>- 其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi mathvariant="normal">h</mi><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">\mathrm{h}_{i}^{(l)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3217em;vertical-align:-0.2769em;"></span><span class="mord"><span class="mord mathrm">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.0197em;">l</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2769em;"><span></span></span></span></span></span></span></span></span></span>是实例i在第l层的特征表示，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">σ</span></span></span></span>是激活函数，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="bold">W</mi><mrow><mo stretchy="false">(</mo><mi>l</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">{\bf W}^{(l)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.888em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord mathbf" style="margin-right:0.016em;">W</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.0197em;">l</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span>是第l层的训练参数。图实例<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>o</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">o_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>通常被设置为节点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">v_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，而<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>N</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">N_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>通常是节点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">v_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的1跳邻域。AGG(·)通过求和或平均聚合来实现，即对邻域特征表示进行求和或平均。更高级的聚合方法，如基于注意力的聚合和LSTM，也被广泛使用 。为了对抗异常行为伪装，应对过平滑问题，产生了以下三种方案
+- **硬边选择 (Hard Edge Selection)：** 旨在直接剪枝或过滤掉那些可能导致误导的异质边
+- **软边选择 (Soft Edge Selection)：** 与硬性的剪枝不同，软选择利用注意力机制为边分配权重
+- **边合成 (Edge Synthesis)：**与侧重于过滤局部结构的边选择不同，**边合成 (Ψ)** 旨在通过构建新的连接来捕获更广泛的全局模式，补充局部信息的不足
+</code></pre>
+<ul>
+<li><strong>特征变换</strong>：<strong>从原始属性或 GNN 学习到的表示中提取最具判别性的信号，并丢弃无关信息</strong>
+<ul>
+<li>**梯度评分(Gradient-based Feature Scoring)：**核心思想是利用监督信号的反馈来识别哪些特征对区分正常和异常实例贡献最大。核心思想是利用监督信号的反馈来识别哪些特征对区分正常和异常实例贡献最大</li>
+<li><strong>谱过滤器(Spectral Graph Filter)：<strong>谱过滤器结合了谱图理论与 GNN，通过在拉普拉斯矩阵的特征空间中操作来提取复杂的结构属性。其核心假设为</strong>正常节点</strong>通常与其邻居具有相似特征，表现为<strong>低频信号</strong>；而<strong>异常节点</strong>往往由于偏离常规模式而表现出与周围环境的不一致性，即<strong>高频信号</strong></li>
+</ul>
+</li>
+</ul>
+<h6 id="生成式gnn模型"><a class="anchor" href="#生成式gnn模型">#</a> 生成式GNN模型</h6>
+<ul>
+<li><strong>特征插值：<strong>是应对图异常检测中数据极度不平衡和异常多样性的一项关键技术,。生成式 GNN 的核心逻辑是通过合成伪异常（Pseudo-anomalies）来扩充训练数据，为模型提供更丰富的监督信号。借鉴了传统机器学习中的</strong>过采样</strong>思想，其基本操作是通过现有实例表示的凸组合来生成新的图实例表示。该技术假设在异常类实例之间进行插值得到的特征表示，能够很好地与异常类的实际分布对齐</li>
+<li><strong>噪声扰动</strong>：<strong>先验驱动的随机噪声</strong>（如高斯分布）来生成新的图实例，从而模拟异常的统计分布或结构特征</li>
+</ul>
+</div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-07-19 21:21:06" itemprop="dateModified" datetime="2026-07-19T21:21:06+08:00">2026-07-19</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" src="/assets/wechatpay.png" alt="Blogger 微信支付"/><p>微信支付</p></div><div><img loading="lazy" src="/assets/alipay.png" alt="Blogger 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>Blogger<i class="ic i-at"><em>@</em></i>My Blog</li><li class="link"><strong>本文链接：</strong><a href="https://chenlan7064.github.io/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" title="【论文精读】Deep graph anomaly detection: A survey and new perspectives">https://chenlan7064.github.io/2026/06/13/2026-06-13-【论文精读】deep-graph-anomaly-detection-a-survey-and-new-perspectives/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;api.btstu.cn&#x2F;sjbz&#x2F;api.php?lx&#x3D;fengjing" title="6.14随笔"><span class="type">上一篇</span><h3>6.14随笔</h3></a></div><div class="item right"><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/" rel="next" itemprop="url" data-background-image="https:&#x2F;&#x2F;api.btstu.cn&#x2F;sjbz&#x2F;api.php?lx&#x3D;fengjing" title="【实用工具推荐】AI 研究与笔记工具-NotebookLM"><span class="type">下一篇</span><h3>【实用工具推荐】AI 研究与笔记工具-NotebookLM</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gad%E9%97%AE%E9%A2%98%E5%A4%8D%E6%9D%82%E6%80%A7%E4%B8%8E%E6%8C%91%E6%88%98"><span class="toc-number">1.</span> <span class="toc-text"> GAD问题复杂性与挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E9%97%AE%E9%A2%98%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text"> 主要问题复杂性</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%80%E5%9B%BE%E6%95%B0%E6%8D%AE%E6%9C%AC%E8%BA%AB%E5%9B%BA%E6%9C%89%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 来源一：图数据本身固有特性</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90%E4%BA%8C%E5%9B%BE%E5%BC%82%E5%B8%B8%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 来源二：图异常现象</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90%E4%B8%89%E4%BB%8E%E9%80%9A%E7%94%A8ad%E7%BB%A7%E6%89%BF%E5%B9%B6%E5%9C%A8-gad-%E4%B8%AD%E8%A2%AB%E6%94%BE%E5%A4%A7%E7%9A%84%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 来源三：从通用AD继承并在 GAD 中被放大的复杂性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%8C%91%E6%88%98"><span class="toc-number">1.2.</span> <span class="toc-text"> 主要挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%91%E6%88%98%E4%B8%80%E7%BB%93%E6%9E%84%E6%84%9F%E7%9F%A5%E4%B8%8E%E8%BF%87%E5%B9%B3%E6%BB%91%E5%B9%B3%E8%A1%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 挑战一：结构感知与过平滑平衡</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%91%E6%88%98%E4%BA%8C%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%9B%BE%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 挑战二：大规模图结构分析能力</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%91%E6%88%98%E4%B8%89%E5%AF%B9%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E5%9B%BE%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5%E7%9A%84%E6%B3%9B%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 挑战三：对不同类型图异常情况的泛化处理</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%91%E6%88%98%E5%9B%9B%E5%B9%B3%E8%A1%A1%E5%9E%8B-gad"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 挑战四：平衡型 GAD</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8C%91%E6%88%98%E4%BA%94%E9%B2%81%E6%A3%92%E6%80%A7%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 挑战五：鲁棒性与结果可解释性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gad%E6%8A%80%E6%9C%AF%E5%88%86%E7%B1%BB%E4%BD%93%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text"> GAD技术分类体系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gnn%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.</span> <span class="toc-text"> GNN框架设计</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A4%E5%88%AB%E5%BC%8Fgnn%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 判别式GNN模型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%BC%8Fgnn%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 生成式GNN模型</span></a></li></ol></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/" rel="bookmark" title="【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection">【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection</a></li><li  class="active"><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" rel="bookmark" title="【论文精读】Deep graph anomaly detection: A survey and new perspectives">【论文精读】Deep graph anomaly detection: A survey and new perspectives</a></li><li ><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/" rel="bookmark" title="【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></li><li ><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/" rel="bookmark" title="【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection">【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection</a></li><li ><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/" rel="bookmark" title="【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective">【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective</a></li><li ><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/" rel="bookmark" title="【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection">【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection</a></li><li ><a href="/2026/07/03/2026-07-04-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-chain-of-thought-augmenting-large-language-models-by-reasoning-on-graphs/" rel="bookmark" title="【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs">【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs</a></li><li ><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/" rel="bookmark" title="【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models">【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Blogger" src="/assets/avatar.jpg"/><p class="name" itemprop="name">Blogger</p><div class="description" itemprop="description">A blog built with Hexo and ShokaX theme</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">26</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/chenlan7064" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;chenlan7064"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/">科研扫盲-BibTex</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/" title="分类于#生涯规划">#生涯规划</a></div><span><a href="/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/">【生涯规划】硕士三年整体时间线规划</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/05/2026-06-05-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%A3%E8%AF%BB/">线性回归中均方误差损失函数的概率论解读</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%85%A5%E9%97%A8/" title="分类于#入门">#入门</a></div><span><a href="/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/">Claude+deepseek v4安装部署教程</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/">6.14随笔</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/">【论文精读】Deep graph anomaly detection: A survey and new perspectives</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%85%A5%E9%97%A8/" title="分类于#入门">#入门</a></div><span><a href="/2026/05/29/hello-world/">Hello World</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/02/2026-06-02-mermaid%E5%9B%BE%E8%A1%A8%E7%A4%BA%E4%BE%8B/">Mermaid图表示例</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/02/2026-06-02-%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86%E9%9A%8F%E7%AC%94/">自动微分随笔</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Blogger @ Tensika的博客小屋</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">46k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">42 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/06/13/2026-06-13-【论文精读】deep-graph-anomaly-detection-a-survey-and-new-perspectives/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>

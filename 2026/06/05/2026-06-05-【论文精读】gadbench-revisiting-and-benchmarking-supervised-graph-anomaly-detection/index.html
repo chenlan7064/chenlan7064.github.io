@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="My Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="My Blog" href="https://chenlan7064.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-TPOTXWTU.js"></link><link rel="modulepreload" href="/js/copy-tex-VNKFBXXM.js"></link><link rel="modulepreload" href="/js/post-AL6ZM6FN.js"></link><link rel="modulepreload" href="/js/chunk-WQ2AW3GB.js"></link><link rel="modulepreload" href="/js/index.esm-4IGUKTUL.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-RTVQBU5X.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=fengjing" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=fengjing" as="image" fetchpriority="high"><link rel="preload" href="https://api.paugram.com/wallpaper/" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=dongman" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/mcapi/mcapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/gqapi/gqapi.php" as="image" fetchpriority="high"><meta name="keywords" content="blog, hexo, shokax"/><meta name="description" content="A blog built with Hexo and ShokaX theme"/><link rel="canonical" href="https://chenlan7064.github.io/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/"><link rel="stylesheet" href="/css/post.css?v=0.5.4"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.4"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection</title>
+<style>
+  /* ====== 基础：安全兜底色（不支持渐变时也能看清） ====== */
+  .post .md code,
+  .post .article code,
+  .md code {
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.88em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    /* 兜底色——看不支持渐变的浏览器 */
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid rgba(180, 130, 150, 0.25);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* ====== 渐变字：仅在现代浏览器生效 ====== */
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #b88a9a  0%,  #a893b8  8%,  #8faac8 17%,
+          #e8d5e0 25%,  #c9a8b8 33%,  #b0c0d8 42%,
+          #e0c8d4 50%,  #b0c0d8 58%,  #c9a8b8 67%,
+          #e8d5e0 75%,  #8faac8 83%,  #a893b8 92%,
+          #b88a9a 100%),
+        linear-gradient(145deg, #e0b0c0, #c9b8d4, #a8c8e8, #c9b8d4, #e0b0c0);
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+      background-origin: padding-box, border-box;
+    }
+  }
+
+  /* ====== hover：流光旋转 ====== */
+  @keyframes diamond-shift {
+    0%   { background-position: 0% 0%, 0% 0%;   }
+    100% { background-position: 100% 0%, 0% 0%; }
+  }
+
+  .md code:hover {
+    animation: diamond-shift 3s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(180, 140, 170, 0.35),
+      0 2px 8px  rgba(160, 130, 160, 0.2);
+  }
+
+  /* ====== 光点扫过 ====== */
+  .md code::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -60%;
+    width: 35%;
+    height: calc(100% + 2px);
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,0.5) 35%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.5) 65%,
+      transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diamond-glint {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+  }
+
+  .md code:hover::after {
+    opacity: 1;
+    animation: diamond-glint 1.4s ease-in-out infinite;
+  }
+
+  /* ====== 暗色模式 ====== */
+  [data-theme="dark"] .md code,
+  [data-theme="dark"] .post .md code {
+    color: #d0c0f0;
+    background: rgba(30, 25, 40, 0.9);
+    border-color: rgba(140, 120, 200, 0.35);
+    text-shadow:
+      0 0 4px  rgba(180, 160, 220, 0.5),
+      0 0 8px  rgba(140, 180, 220, 0.3);
+  }
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    [data-theme="dark"] .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #c0b0e0  0%,  #90c8e8  8%,  #e8d8ff 17%,
+          #a8c8e8 25%,  #c8b8e8 33%,  #e0d0f0 42%,
+          #ffffff 50%,  #e0d0f0 58%,  #c8b8e8 67%,
+          #a8c8e8 75%,  #e8d8ff 83%,  #90c8e8 92%,
+          #c0b0e0 100%),
+        linear-gradient(145deg, rgba(120,100,180,0.5), rgba(80,150,200,0.5), rgba(150,100,180,0.5));
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+    }
+  }
+
+  [data-theme="dark"] .md code:hover {
+    box-shadow:
+      0 0 2px  rgba(160, 140, 220, 0.5),
+      0 0 10px rgba(120, 160, 210, 0.35);
+    text-shadow:
+      0 0 6px  rgba(200, 180, 240, 0.8),
+      0 0 14px rgba(160, 200, 240, 0.5);
+  }
+
+  [data-theme="dark"] .md code::after {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(200,180,255,0.3) 35%,
+      rgba(220,200,255,0.65) 50%,
+      rgba(200,180,255,0.3) 65%,
+      transparent 100%);
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.2"><style>body{overflow-y:scroll!important}body.fullscreen{overflow:hidden!important}#loading{pointer-events:none}footer#footer{position:relative!important;z-index:2!important}main{padding-bottom:3rem!important}</style></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection</h1><div class="meta"><span class="item" title="创建时间：2026-06-05 08:58:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2026-06-05T08:58:00+08:00">2026-06-05</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>3.4k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>3 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Tensika的博客小屋</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=fengjing&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=fengjing&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.paugram.com/wallpaper/&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=dongman&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/mcapi/mcapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/gqapi/gqapi.php&quot;);"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="item" rel="index" title="分类于#论文精读"><span itemprop="name">#论文精读<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" data-pagefind-body="data-pagefind-body" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://chenlan7064.github.io/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="Blogger"/><meta itemprop="description" content="Powered by ShokaX, A blog built with Hexo and ShokaX theme"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="My Blog"/></span><div class="body md" itemprop="articleBody"><h2 id="引言"><a class="anchor" href="#引言">#</a> 引言</h2>
+<p><strong>benchmark</strong>（基准）的原意是用作衡量、比较或判断其他事物性能、质量、价值等的参照点或标准。相比普通论文，benchmark论文并不发明新的方法，而是把别人已经提出的方法全部拉出来，在统一的条件（相同数据、相同评价标准、相同硬件）下公平比拼，回答一个问题：&quot;到底谁更强？&quot;</p>
+<p><strong>GAD</strong>(图异常检测)是一种识别图中那些与大多数参考对象存在显著偏离的异常图对象的过程，这些对象可以包括<strong>节点</strong>、<strong>边</strong>或<strong>子结构</strong>等。其应用领域包括：防止金融欺诈和洗钱行为、预测网络入侵和设备故障、识别垃圾评论和虚假新闻等。相比表格数据异常检测，GAD将对象间的依赖关系纳入考虑，增强了识别欺诈行为的能力，但与此同时也存在着<strong>标签不平衡</strong>、<strong>特征多样性</strong>以及<strong>关系伪装</strong>等独特的挑战。</p>
+<ul>
+<li>标签不平衡：异常对象远少于正常对象（10000个人中只有1个骗子）</li>
+<li>特征异配：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51087794/article/details/144307689">同配图和异配图是什么</a> 异常节点和邻居节点通常特征差异更大，呈现出高异配性：异常节点更倾向于和特征、标签不同的正常节点相连，和正常节点普遍存在的同配性（同类特征节点相连）形成鲜明对比，这种特征异质性会干扰GNN的邻居聚合过程，增加异常检测难度。</li>
+<li>关系伪装：异常节点会主动和大量正常节点建立连接，伪装成正常样本的关系结构，降低自身被识别的概率；但实际上异常节点仍主要和同类异常节点保持核心连接，这种连接模式提升了检测难度（骗子会故意加大量正常人为好友躲避检测）</li>
+</ul>
+<p>下图为目前的GAD基准</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/GAD%E5%9F%BA%E5%87%86.jpg" alt="" /></p>
+<p>从图中可以看到，目前GAD基准存在的问题：</p>
+<ul>
+<li>缺乏一个全面的监督性（半监督+有监督）基准。与此同时，已经存在非常多时间序列数据、图像、视频以及表格数据的异常检测基准</li>
+<li>树集成方法与GNN之间的比较缺乏研究。前面的基准只对GNN方法进行了比较，最新的BOND基准依然只包括GNN和标准方法</li>
+<li>对大尺度图的探索依然有限。</li>
+</ul>
+<p><strong>GADbench</strong>所做的，就是在<strong>GAD</strong>(图异常检测)领域提供了一个针对静态图的有监督方法基准。</p>
+<h2 id="gadbench构成"><a class="anchor" href="#gadbench构成">#</a> GADbench构成</h2>
+<h4 id="基准数据集"><a class="anchor" href="#基准数据集">#</a> 基准数据集</h4>
+<p>来自真实世界的10个GAD数据集</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/%E5%9F%BA%E5%87%86%E6%95%B0%E6%8D%AE%E9%9B%86.jpg" alt="" /></p>
+<p>可以看到，这些数据集具有以下特点：</p>
+<ul>
+<li><strong>真实的异常</strong>：GADBench 中的数据集仅包含在实际场景中自然出现的异常情况，这与之前那些使用合成异常数据进行 GAD 评估的研究有所不同。这些早期的研究通常会向正常图结构中插入人工节点属性和结构，比如 Cora[71]中的做法，从而生成一些相对容易识别的异常，而且这些异常显然与现实世界中的异常有所不同。</li>
+<li><strong>广泛的领域</strong>：GADBench 中的数据集涵盖多个领域，包括社交媒体、电子商务、电子金融以及众包等</li>
+<li><strong>不同的规模范围</strong>：GADBench 的数据集涵盖了广泛的节点数量范围，从数千（weibo,8405）到数百万(T-social,5781065)个节点不等</li>
+<li><strong>不平衡的比例</strong>：每个数据集中的异常数量超过 100 个，这样可以保证实验结果的稳定性：同时，异常比例不超过 25%，从而保留了 GAD 系统固有的不平衡特性。</li>
+</ul>
+<p>在这些数据集中，Weibo、Reddit、Questions 和 T-Social 这些数据集被专门用于识别社交媒体平台上的异常账户。Tolokers、Amazon 和 YelpChi 数据集则旨在检测众包或电子商务平台上的欺诈性员工、评论以及评论者。T-Finance、Elliptic 和 DGraph-Fin 这些数据集则分别专注于识别金融网络中的欺诈用户、非法实体以及逾期未偿还的贷款。如需了解每个数据集的更详细描述</p>
+<h4 id="基准模型"><a class="anchor" href="#基准模型">#</a> 基准模型</h4>
+<h6 id="经典方法"><a class="anchor" href="#经典方法">#</a> 经典方法</h6>
+<p>MLP, KNN, SVM, RF, XGBoost, XGBOD, NA</p>
+<h6 id="标准gnn"><a class="anchor" href="#标准gnn">#</a> 标准GNN</h6>
+<p>GCN , SGC , GIN , GraphSAGE , GAT , GT , PNA ,BGNN, RGCN , HGT</p>
+<h6 id="异常检测特化的gnn"><a class="anchor" href="#异常检测特化的gnn">#</a> 异常检测特化的GNN</h6>
+<p>GAS , DCI , PC-GNN , GAT-sep , BernNet , AMNet ,BWGNN , GHRN , CARE-GNN , H2-FDetector</p>
+<h6 id="基于邻居聚合的树集成模型"><a class="anchor" href="#基于邻居聚合的树集成模型">#</a> 基于邻居聚合的树集成模型</h6>
+<p>RF-Graph，XGB-Graph</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/%E5%9F%BA%E5%87%86%E6%A8%A1%E5%9E%8B.jpg" alt="" /></p>
+<h4 id="评估指标"><a class="anchor" href="#评估指标">#</a> 评估指标</h4>
+<p>AUROC：ROC曲线下的面积，对头部的预测不敏感</p>
+<p>AUPRC：PR曲线下的面积，适配GAD中正负样本（异常样本极少）极度不平衡的场景，在ROC和top-k之间取得了平衡</p>
+<p>Rec@K：基于top-K检索的召回率指标，对整体不敏感</p>
+<h2 id="复现"><a class="anchor" href="#复现">#</a> 复现</h2>
+<h4 id="默认超参数条件全监督"><a class="anchor" href="#默认超参数条件全监督">#</a> 默认超参数条件+全监督</h4>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_Rec%40K_barchart.png" alt="" /></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUROC_barchart.png" alt="" /></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/fig_AUPRC_barchart.png" alt="" /><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/AUPRC_boxplot.png" alt="" /></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Rec%40K_boxplot.png" alt="" /></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/AUROC_boxplot.png" alt="" /></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Time_Total.png" alt="" /></p>
+<p>结果分析：在所有模型使用默认超参数，全监督的情况下，采用邻居聚合机制的集成树具有显著优越的性能，XGB-Graph 和 RF-Graph 在所有指标上都持续优于其他比较模型</p>
+<h4 id="实验中遇到的问题"><a class="anchor" href="#实验中遇到的问题">#</a> 实验中遇到的问题</h4>
+<p>一开始我是打算在本地跑这个实验的，但是本地是5070显卡，论文环境依赖的DGL 官方没有为 Windows 发布 CUDA 12.4+ 版本，而 RTX 5070 又必须用 CUDA 12.4+才支持。两个约束冲突了。我尝试通过WSL来规避这个问题，但依然困难重重，最终还是决定转云平台</p>
+<p>由于论文实验环境是48GB显存，而云平台4090是24GB显存，因而在 tfinance上跑HGT时炸显存了，HGT跳过。</p>
+<p>DGraph-Fin和T-Social数据集过于庞大，超出承受范围，同样予以跳过。</p>
+</div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于 </span><time title="修改时间：2026-07-19 21:21:06" itemprop="dateModified" datetime="2026-07-19T21:21:06+08:00">2026-07-19</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" src="/assets/wechatpay.png" alt="Blogger 微信支付"/><p>微信支付</p></div><div><img loading="lazy" src="/assets/alipay.png" alt="Blogger 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>Blogger<i class="ic i-at"><em>@</em></i>My Blog</li><li class="link"><strong>本文链接：</strong><a href="https://chenlan7064.github.io/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/" title="【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection">https://chenlan7064.github.io/2026/06/05/2026-06-05-【论文精读】gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;api.btstu.cn&#x2F;sjbz&#x2F;api.php?lx&#x3D;dongman" title="实用工具及网站"><span class="type">上一篇</span><h3>实用工具及网站</h3></a></div><div class="item right"><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" rel="next" itemprop="url" data-background-image="https:&#x2F;&#x2F;api.ixiaowai.cn&#x2F;mcapi&#x2F;mcapi.php" title="机器学习随笔"><span class="type">下一篇</span><h3>机器学习随笔</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gadbench%E6%9E%84%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text"> GADbench构成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%87%86%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">2.1.</span> <span class="toc-text"> 基准数据集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E5%87%86%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text"> 基准模型</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 经典方法</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%A0%87%E5%87%86gnn"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 标准GNN</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%89%B9%E5%8C%96%E7%9A%84gnn"><span class="toc-number">2.2.3.</span> <span class="toc-text"> 异常检测特化的GNN</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%82%BB%E5%B1%85%E8%81%9A%E5%90%88%E7%9A%84%E6%A0%91%E9%9B%86%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.4.</span> <span class="toc-text"> 基于邻居聚合的树集成模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">2.3.</span> <span class="toc-text"> 评估指标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text"> 复现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%B6%85%E5%8F%82%E6%95%B0%E6%9D%A1%E4%BB%B6%E5%85%A8%E7%9B%91%E7%9D%A3"><span class="toc-number">3.1.</span> <span class="toc-text"> 默认超参数条件+全监督</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">3.2.</span> <span class="toc-text"> 实验中遇到的问题</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li  class="active"><a href="/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/" rel="bookmark" title="【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection">【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection</a></li><li ><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" rel="bookmark" title="【论文精读】Deep graph anomaly detection: A survey and new perspectives">【论文精读】Deep graph anomaly detection: A survey and new perspectives</a></li><li ><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/" rel="bookmark" title="【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></li><li ><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/" rel="bookmark" title="【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection">【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection</a></li><li ><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/" rel="bookmark" title="【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective">【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective</a></li><li ><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/" rel="bookmark" title="【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection">【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection</a></li><li ><a href="/2026/07/03/2026-07-04-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-chain-of-thought-augmenting-large-language-models-by-reasoning-on-graphs/" rel="bookmark" title="【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs">【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs</a></li><li ><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/" rel="bookmark" title="【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models">【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Blogger" src="/assets/avatar.jpg"/><p class="name" itemprop="name">Blogger</p><div class="description" itemprop="description">A blog built with Hexo and ShokaX theme</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">26</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/chenlan7064" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;chenlan7064"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/03/2026-06-03-torch%E5%9F%BA%E7%A1%80%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">torch基础常用函数</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/02/2026-06-02-mermaid%E5%9B%BE%E8%A1%A8%E7%A4%BA%E4%BE%8B/">Mermaid图表示例</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/">【实用工具推荐】AI 研究与笔记工具-NotebookLM</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/">机器学习随笔</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%85%A5%E9%97%A8/" title="分类于#入门">#入门</a></div><span><a href="/2026/05/29/hello-world/">Hello World</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/">实用工具及网站</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/">科研扫盲-顶会顶刊</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="分类于#区块链">#区块链</a></div><span><a href="/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/">Tron波场链入门</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/">【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/07/19/2026-07-19-wsl%E7%AE%80%E7%95%A5%E6%8C%87%E5%8D%97/">WSL简略指南</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Blogger @ Tensika的博客小屋</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">46k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">42 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2026/06/05/2026-06-05-【论文精读】gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://chenlan7064.github.io</id>
+    <title>My Blog • Posts by &#34;#vibecoding&#34; tag</title>
+    <link href="https://chenlan7064.github.io" />
+    <updated>2026-05-30T03:58:00.000Z</updated>
+    <category term="#VibeCoding" />
+    <category term="#Hexo使用" />
+    <entry>
+        <id>https://chenlan7064.github.io/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</id>
+        <title>Claude+deepseek v4安装部署教程</title>
+        <link rel="alternate" href="https://chenlan7064.github.io/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/"/>
+        <content type="html">&lt;h2 id=&#34;1为什么要安装claude&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1为什么要安装claude&#34;&gt;#&lt;/a&gt; 1.为什么要安装Claude？&lt;/h2&gt;
+&lt;p&gt;Claude Code并非一个单一的AI模型，而是一个&lt;strong&gt;专为开发者设计的AI编程助手（Agent）&lt;/strong&gt;。它的核心价值在于将自然语言指令转化为具体的开发行动，其安装意义主要体现在：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;工程化思维&lt;/strong&gt;：它擅长理解复杂的项目上下文，能进行架构设计、代码重构和系统性思考，而不仅仅是生成代码片段。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动化工作流&lt;/strong&gt;：Claude Code可以执行一系列连贯的任务，例如创建项目脚手架、运行测试、调试代码、生成文档等，模拟一个初级开发者的完整工作流程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;深度集成&lt;/strong&gt;：作为命令行工具，它能与本地开发环境深度交互，直接操作文件系统，提供更贴近实际编程的辅助体验。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单来说，安装Claude Code是为了获得一个具备&lt;strong&gt;工程化思维和自动化执行能力&lt;/strong&gt;的AI编程伙伴。&lt;/p&gt;
+&lt;h2 id=&#34;2claude-code能干什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2claude-code能干什么&#34;&gt;#&lt;/a&gt; 2.Claude Code能干什么？&lt;/h2&gt;
+&lt;p&gt;Claude Code的能力覆盖软件开发生命周期的多个关键环节，尤其适合高频使用命令行的开发者（如运维、后端、全栈工程师）。其主要应用场景包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;项目初始化与架构设计&lt;/strong&gt;：快速生成符合最佳实践的项目结构，为React、Vue、微服务等应用提供初始蓝图。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心编码与调试&lt;/strong&gt;：根据需求描述生成高质量、可运行的代码，并能够诊断和修复代码中的错误。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代码审查与重构&lt;/strong&gt;：分析现有代码，提出优化建议，并执行安全、可控的重构操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生成测试用例与文档&lt;/strong&gt;：自动编写单元测试、集成测试，并生成清晰的技术文档或API说明。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动化部署与脚本编写&lt;/strong&gt;：协助完成部署流程的自动化，编写运维脚本和日常自动化任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;许多开发者的实践反馈表明，一个配置得当的Claude Code已经能够丝滑地处理日常开发中的大部分任务。本博客的搭建配置就是完全由Claude Code所完成的&lt;/p&gt;
+&lt;h2 id=&#34;3为什么选择deepseek-v4作为接入后端&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3为什么选择deepseek-v4作为接入后端&#34;&gt;#&lt;/a&gt; 3.为什么选择DeepSeek V4作为接入后端？&lt;/h2&gt;
+&lt;p&gt;虽然Claude Code设计之初适配Anthropic自家的模型（如Opus、Sonnet），但将其后端切换至DeepSeek V4是一个极具成本效益和实用性的策略。主要原因如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;极致的成本控制&lt;/strong&gt;&lt;br /&gt;
+使用原生Claude模型（如Sonnet 4.6）处理大量编程任务成本高昂。而DeepSeek V4系列模型在保持强大性能的同时，价格极具竞争力。一个典型的对比是：处理400万Tokens的编程任务，使用Claude Sonnet 4.6可能需花费约26美元，而使用DeepSeek V4可将成本降低至约2美元，降幅超过90%。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;卓越的技术性能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;长上下文支持&lt;/strong&gt;：DeepSeek V4支持128K乃至1M Tokens的上下文窗口，非常适合处理大型代码库和复杂项目需求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;扎实的编程基准&lt;/strong&gt;：在主流编程基准测试中表现优异，尤其在软件工程、工具调用和浏览器自动化任务上能力突出。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模型可选性&lt;/strong&gt;：提供&lt;code&gt;deepseek-v4-pro&lt;/code&gt;（深度推理）和&lt;code&gt;deepseek-v4-flash&lt;/code&gt;（轻量快速）两个版本，可根据任务复杂度灵活调度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;无缝的接入体验&lt;/strong&gt;&lt;br /&gt;
+DeepSeek平台原生支持Anthropic API格式，这意味着无需复杂的代理或中间层即可让Claude Code直接调用。配置仅需两步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置环境变量，将请求指向DeepSeek的API端点。&lt;/li&gt;
+&lt;li&gt;在Claude Code的配置文件中指定使用DeepSeek的模型名称。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;混合编程范式&lt;/strong&gt;&lt;br /&gt;
+最实用的策略并非完全用DeepSeek V4替代高端模型，而是&lt;strong&gt;让它们各司其职&lt;/strong&gt;。可以构建这样的工作流：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DeepSeek V4 作为主力引擎&lt;/strong&gt;：处理日常编码、脚本编写、单元测试、基础架构等低风险、高频率任务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高端模型（如Claude Opus）作为精加工工具&lt;/strong&gt;：仅在需要进行复杂架构设计、关键代码审查或深度逻辑推理时调用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;总结而言&lt;/strong&gt;，安装Claude Code是为了获得一个工程化的AI编程代理；而选择接入DeepSeek V4，则是在确保核心能力不受重大影响的前提下，实现成本的大幅优化和资源的智能调度，从而打造一个真正高效、实用的个人AI开发环境。&lt;/p&gt;
+&lt;h2 id=&#34;4如何安装claude&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4如何安装claude&#34;&gt;#&lt;/a&gt; 4.如何安装Claude&lt;/h2&gt;
+&lt;h3 id=&#34;1前置准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1前置准备&#34;&gt;#&lt;/a&gt; 1.前置准备&lt;/h3&gt;
+&lt;p&gt;安装Node.js 18+,详情参考&lt;a href=&#34;https://zhuanlan.zhihu.com/p/442215189&#34;&gt;node.js安装及环境配置超详细教程【Windows系统安装包方式】&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Windows 用户需安装 &lt;a href=&#34;https://git-scm.com/download/win&#34;&gt;Git for Windows&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;获取deepseekapi，这里提供两种方式。第一种是前往&lt;a href=&#34;https://platform.deepseek.com&#34;&gt;deepseek官网&lt;/a&gt;，注册登录账号以后，在左侧选择API keys选项卡，选择创建API keys，生成api，名称可以随便取。密钥目前只在生成时可见，生成以后建议立刻妥善到本地。&lt;img loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20260530112740.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2安装claude-code&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2安装claude-code&#34;&gt;#&lt;/a&gt; 2.安装Claude Code&lt;/h3&gt;
+&lt;p&gt;在命令行界面，执行以下命令安装 Claude Code：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm install -g @anthropic-ai/claude-code&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;假如出现&lt;code&gt;npm : 无法加载文件 D:\Nodejs\node_global\npm.ps1，因为在此系统上禁止运行脚本&lt;/code&gt;的报错，是由于Windows系统中PowerShell的执行策略限制了脚本的执行，而你要执行的文件是一个PowerShell脚本文件，所以默认情况下无法执行。只需要执行以下命令来更改执行策略为RemoteSigned并设置为作用于当前用户即可。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;Set-ExecutionPolicy -Scope CurrentUser&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;安装结束后，执行以下命令，若显示版本号则安装成功：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;claude --version&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3配置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3配置环境变量&#34;&gt;#&lt;/a&gt; 3.配置环境变量&lt;/h3&gt;
+&lt;p&gt;Linux / Mac 用户执行以下命令配置 &lt;a href=&#34;https://api.deepseek.com/anthropic&#34;&gt;DeepSeek Anthropic API&lt;/a&gt; 环境变量，其中 API Key 在 &lt;a href=&#34;https://platform.deepseek.com/api_keys&#34;&gt;DeepSeek Platform&lt;/a&gt; 获取：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export ANTHROPIC_AUTH_TOKEN=&amp;#x3C;你的 DeepSeek API Key&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export ANTHROPIC_MODEL=deepseek-v4-pro[1m]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-v4-pro[1m]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-v4-pro[1m]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-v4-flash&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;export CLAUDE_CODE_EFFORT_LEVEL=max&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Windows用户在powershell执行以下命令：&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:ANTHROPIC_BASE_URL=&#34;https://api.deepseek.com/anthropic&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:ANTHROPIC_AUTH_TOKEN=&#34;&amp;#x3C;你的 DeepSeek API Key&gt;&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:ANTHROPIC_MODEL=&#34;deepseek-v4-pro[1m]&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:ANTHROPIC_DEFAULT_OPUS_MODEL=&#34;deepseek-v4-pro[1m]&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:ANTHROPIC_DEFAULT_SONNET_MODEL=&#34;deepseek-v4-pro[1m]&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:ANTHROPIC_DEFAULT_HAIKU_MODEL=&#34;deepseek-v4-flash&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:CLAUDE_CODE_SUBAGENT_MODEL=&#34;deepseek-v4-flash&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;$env:CLAUDE_CODE_EFFORT_LEVEL=&#34;max&#34;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进入项目目录，执行 &lt;code&gt;claude&lt;/code&gt; 命令，即可开始使用了。注意，必须和上面的操作在同一个终端执行，每次启动claude，都需要重新执行一遍以上环境变量配置，因而建议让Claude写一个脚本，实现自动配置启动&lt;/p&gt;
+&lt;pre class=&#34;shiki shiki-themes vitesse-light vitesse-dark&#34; style=&#34;background-color:#ffffff;--shiki-dark-bg:#121212;color:#393a34;--shiki-dark:#dbd7caee&#34; tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-plain&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span&gt;cd /path/to/my-project&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span&gt;claude&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;成功接入DeepSeek v4后的Claude界面如下所示，接下来只需要用自然语言向Claude提出要求即可，享受你的VibeCoding之旅吧！&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://raw.githubusercontent.com/chenlan7064/Picbed_PicGo/main/img/Claude%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B%E5%9B%BE.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</content>
+        <category term="#VibeCoding" />
+        <updated>2026-05-30T03:58:00.000Z</updated>
+    </entry>
+</feed>

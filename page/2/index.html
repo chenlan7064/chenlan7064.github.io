@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="My Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="My Blog" href="https://chenlan7064.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-TPOTXWTU.js"></link><link rel="modulepreload" href="/js/copy-tex-VNKFBXXM.js"></link><link rel="modulepreload" href="/js/post-AL6ZM6FN.js"></link><link rel="modulepreload" href="/js/chunk-WQ2AW3GB.js"></link><link rel="modulepreload" href="/js/index.esm-4IGUKTUL.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-RTVQBU5X.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://api.ixiaowai.cn/mcapi/mcapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.paugram.com/wallpaper/" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/gqapi/gqapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.paugram.com/wallpaper/" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=dongman" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/api/api.php" as="image" fetchpriority="high"><meta name="keywords" content="blog, hexo, shokax"/><meta name="description" content="A blog built with Hexo and ShokaX theme"/><link rel="canonical" href="https://chenlan7064.github.io/page/2/"><link rel="stylesheet" href="/css/page.css?v=0.5.4"><title>Tensika的博客小屋 = My Blog = Powered by ShokaX</title>
+<style>
+  /* ====== 基础：安全兜底色（不支持渐变时也能看清） ====== */
+  .post .md code,
+  .post .article code,
+  .md code {
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.88em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    /* 兜底色——看不支持渐变的浏览器 */
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid rgba(180, 130, 150, 0.25);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* ====== 渐变字：仅在现代浏览器生效 ====== */
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #b88a9a  0%,  #a893b8  8%,  #8faac8 17%,
+          #e8d5e0 25%,  #c9a8b8 33%,  #b0c0d8 42%,
+          #e0c8d4 50%,  #b0c0d8 58%,  #c9a8b8 67%,
+          #e8d5e0 75%,  #8faac8 83%,  #a893b8 92%,
+          #b88a9a 100%),
+        linear-gradient(145deg, #e0b0c0, #c9b8d4, #a8c8e8, #c9b8d4, #e0b0c0);
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+      background-origin: padding-box, border-box;
+    }
+  }
+
+  /* ====== hover：流光旋转 ====== */
+  @keyframes diamond-shift {
+    0%   { background-position: 0% 0%, 0% 0%;   }
+    100% { background-position: 100% 0%, 0% 0%; }
+  }
+
+  .md code:hover {
+    animation: diamond-shift 3s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(180, 140, 170, 0.35),
+      0 2px 8px  rgba(160, 130, 160, 0.2);
+  }
+
+  /* ====== 光点扫过 ====== */
+  .md code::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -60%;
+    width: 35%;
+    height: calc(100% + 2px);
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,0.5) 35%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.5) 65%,
+      transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diamond-glint {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+  }
+
+  .md code:hover::after {
+    opacity: 1;
+    animation: diamond-glint 1.4s ease-in-out infinite;
+  }
+
+  /* ====== 暗色模式 ====== */
+  [data-theme="dark"] .md code,
+  [data-theme="dark"] .post .md code {
+    color: #d0c0f0;
+    background: rgba(30, 25, 40, 0.9);
+    border-color: rgba(140, 120, 200, 0.35);
+    text-shadow:
+      0 0 4px  rgba(180, 160, 220, 0.5),
+      0 0 8px  rgba(140, 180, 220, 0.3);
+  }
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    [data-theme="dark"] .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #c0b0e0  0%,  #90c8e8  8%,  #e8d8ff 17%,
+          #a8c8e8 25%,  #c8b8e8 33%,  #e0d0f0 42%,
+          #ffffff 50%,  #e0d0f0 58%,  #c8b8e8 67%,
+          #a8c8e8 75%,  #e8d8ff 83%,  #90c8e8 92%,
+          #c0b0e0 100%),
+        linear-gradient(145deg, rgba(120,100,180,0.5), rgba(80,150,200,0.5), rgba(150,100,180,0.5));
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+    }
+  }
+
+  [data-theme="dark"] .md code:hover {
+    box-shadow:
+      0 0 2px  rgba(160, 140, 220, 0.5),
+      0 0 10px rgba(120, 160, 210, 0.35);
+    text-shadow:
+      0 0 6px  rgba(200, 180, 240, 0.8),
+      0 0 14px rgba(160, 200, 240, 0.5);
+  }
+
+  [data-theme="dark"] .md code::after {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(200,180,255,0.3) 35%,
+      rgba(220,200,255,0.65) 50%,
+      rgba(200,180,255,0.3) 65%,
+      transparent 100%);
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.2"><style>body{overflow-y:scroll!important}body.fullscreen{overflow:hidden!important}#loading{pointer-events:none}footer#footer{position:relative!important;z-index:2!important}main{padding-bottom:3rem!important}</style></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><a class="logo" href="/" rel="start"><p class="artboard">Tensika的博客小屋</p><h1 class="title" itemprop="name headline">My Blog</h1></a><p class="meta" itemprop="description">= Powered by ShokaX =</p></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Tensika的博客小屋</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/mcapi/mcapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.paugram.com/wallpaper/&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/gqapi/gqapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.paugram.com/wallpaper/&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=dongman&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/api/api.php&quot;);"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="index wrap"><div class="segments posts"><article class="item"><div class="cover"><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/" itemprop="url" title="【数理基础】推荐阅读书目"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=fengjing" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-14 07:28:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-14T07:28:00+08:00">2026-06-14</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>173</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/" itemprop="url" title="【数理基础】推荐阅读书目">【数理基础】推荐阅读书目</a></h3><div class="excerpt">The Matrix Cookbook
+Bronstein大神写的《Geometric Deep Learning》
+斯坦福经典《统计学习要素》
+Roman Vershynin 的 High-Dimensional Probability Cover &amp; Thomas的 Elements of Information Theory
+</div><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/" class="btn" itemprop="url" title="【数理基础】推荐阅读书目">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/" itemprop="url" title="【实用工具推荐】AI 研究与笔记工具-NotebookLM"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=fengjing" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-13 21:16:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-13T21:16:00+08:00">2026-06-13</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>58</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/" itemprop="url" title="【实用工具推荐】AI 研究与笔记工具-NotebookLM">【实用工具推荐】AI 研究与笔记工具-NotebookLM</a></h3><div class="excerpt">使用教程
+</div><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/" class="btn" itemprop="url" title="【实用工具推荐】AI 研究与笔记工具-NotebookLM">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" itemprop="url" title="【论文精读】Deep graph anomaly detection: A survey and new perspectives"><img loading="lazy" decoding="async" src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-13 21:15:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-13T21:15:00+08:00">2026-06-13</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>4.9k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>4 分钟</span></span></div><h3><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" itemprop="url" title="【论文精读】Deep graph anomaly detection: A survey and new perspectives">【论文精读】Deep graph anomaly detection: A survey and new perspectives</a></h3><div class="excerpt"># GAD问题复杂性与挑战
+# 主要问题复杂性
+# 来源一：图数据本身固有特性
+
+结构依赖性：图结构的复杂性体现在不同层次的数据中的连通性模式、依赖关系以及影响程度上，这些因素在判断图中是否存在异常现象时起着至关重要的作用。在独立同分布数据中，异常现象是独立于上下文的，而在图中，异常现象往往取决于某个图数据实例的上下文，比如某个节点的邻近节点。在一个上下文中，某种异常现象可能被视为正常现象，而在另一个上下文中则可能被视为异常现象。
+图类型多样性：图的类型很多，各自具有不同的用途和应用场景。根据图是否随时间变化，可以将图分为静态图与动态图两类。此外，还可以根据连接类型将图分为异质连接图与同质连接</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/06/13/2026-06-13-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91deep-graph-anomaly-detection-a-survey-and-new-perspectives/" class="btn" itemprop="url" title="【论文精读】Deep graph anomaly detection: A survey and new perspectives">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/" itemprop="url" title="6.14随笔"><img loading="lazy" decoding="async" src="https://api.paugram.com/wallpaper/" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-13 18:47:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-13T18:47:00+08:00">2026-06-13</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>144</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/" itemprop="url" title="6.14随笔">6.14随笔</a></h3><div class="excerpt">Git不会自动走代理，假如git推不上可以查下代理端口然后
+git config --global http.proxy http:&#x2F;&#x2F;127.0.0.1:端口号
+git config --global https.proxy http:&#x2F;&#x2F;127.0.0.1:端口号
+配置一下
+</div><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/" class="btn" itemprop="url" title="6.14随笔">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/" itemprop="url" title="科研扫盲-BibTex"><img loading="lazy" decoding="async" src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-12 14:25:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-12T14:25:00+08:00">2026-06-12</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>536</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/" itemprop="url" title="科研扫盲-BibTex">科研扫盲-BibTex</a></h3><div class="excerpt">学术界管理参考文献的标准格式，是 TeX&#x2F;LaTeX 系统的配套工具。它把一篇论文的信息（标题、作者、会议、年份等）存成结构化文本，方便引用。Google Scholar中，每篇论文的 &quot;Cite&quot; 按钮弹出的就是 BibTeX。DBLP中，每篇论文旁边的 [bib] 链接就是 BibTeX。
+基本语法结构：
+@类型 {引用键,
+
+  字段名1 &#x3D; {字段值1},
+
+  字段名2 &#x3D; &quot;字段值2&quot;,
+
+  ...
+
+}
+
+@类型：定义文献种类（如 article, book, inproceedings）
+‌引用键 (Cit</div><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E6%9C%AF%E8%AF%AD/" class="btn" itemprop="url" title="科研扫盲-BibTex">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/" itemprop="url" title="科研扫盲-顶会顶刊"><img loading="lazy" decoding="async" src="https://api.paugram.com/wallpaper/" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-12 14:24:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-12T14:24:00+08:00">2026-06-12</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>2 分钟</span></span></div><h3><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/" itemprop="url" title="科研扫盲-顶会顶刊">科研扫盲-顶会顶刊</a></h3><div class="excerpt"># 顶会、顶刊
+WWW会议（The International Conference of World Wide Web）：CCF A类会议，Core Conference Ranking A*类会议。几乎计算机的任何一个领域都可以投WWW
+WWW每年的录取率非常低，在15年之前甚至是低于15%，15年之后开始在15%-20%之间波动，但是近两年有抬头的趋势，例如21年的录取率甚至打破了20%的红线，为20.6%！不过22年开始回落，估计是会议方要严控质量。投稿量有中跳跃提升的感觉，近三年已经稳定超过1000篇了，2022年同样达到历史最高值，1783篇！由于录取率非常低，所以WWW每年录用的</div><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/" class="btn" itemprop="url" title="科研扫盲-顶会顶刊">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/05/2026-06-05-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%A3%E8%AF%BB/" itemprop="url" title="线性回归中均方误差损失函数的概率论解读"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=fengjing" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-05 13:17:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-05T13:17:00+08:00">2026-06-05</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>852</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/05/2026-06-05-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%A3%E8%AF%BB/" itemprop="url" title="线性回归中均方误差损失函数的概率论解读">线性回归中均方误差损失函数的概率论解读</a></h3><div class="excerpt">已知线性回归假设标签y可以表示为特征x的加权和，即
+y&#x3D;wx+b
+但是实际情况下，真实的y和通过这个线性模型由x推导出的y&#39;之间往往存在着差值。我们可以将这个差值ϵ\epsilonϵ 视为一个符合正态分布 N(0，$\epsilon^{2}$ )的噪声，即真实标签可以表示为
+$y&#x3D;wx+b+\epsilon，\epsilon\sim\mathcal{N}(0,\sigma^{2})$
+已知x的情况下，$y-\mathbf{w}^{\textsf{T}}\mathbf{x}-b$的取值即为$\epsilon$的概率密度函数，即
+$P(\epsilon)&#x3D;P(</div><a href="/2026/06/05/2026-06-05-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%A3%E8%AF%BB/" class="btn" itemprop="url" title="线性回归中均方误差损失函数的概率论解读">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" itemprop="url" title="机器学习随笔"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=dongman" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-05 11:44:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-05T11:44:00+08:00">2026-06-05</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>133</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" itemprop="url" title="机器学习随笔">机器学习随笔</a></h3><div class="excerpt">
+</div><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/" class="btn" itemprop="url" title="机器学习随笔">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/" itemprop="url" title="【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection"><img loading="lazy" decoding="async" src="https://api.paugram.com/wallpaper/" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-05 08:58:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-05T08:58:00+08:00">2026-06-05</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>3.4k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>3 分钟</span></span></div><h3><a href="/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/" itemprop="url" title="【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection">【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection</a></h3><div class="excerpt"># 引言
+benchmark（基准）的原意是用作衡量、比较或判断其他事物性能、质量、价值等的参照点或标准。相比普通论文，benchmark论文并不发明新的方法，而是把别人已经提出的方法全部拉出来，在统一的条件（相同数据、相同评价标准、相同硬件）下公平比拼，回答一个问题：&quot;到底谁更强？&quot;
+GAD(图异常检测)是一种识别图中那些与大多数参考对象存在显著偏离的异常图对象的过程，这些对象可以包括节点、边或子结构等。其应用领域包括：防止金融欺诈和洗钱行为、预测网络入侵和设备故障、识别垃圾评论和虚假新闻等。相比表格数据异常检测，GAD将对象间的依赖关系纳入考虑，增强了识别欺诈行为的能力</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/06/05/2026-06-05-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91gadbench-revisiting-and-benchmarking-supervised-graph-anomaly-detection/" class="btn" itemprop="url" title="【论文精读】GADBench: Revisiting and Benchmarking Supervised Graph Anomaly Detection">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/" itemprop="url" title="实用工具及网站"><img loading="lazy" decoding="async" src="https://api.ixiaowai.cn/mcapi/mcapi.php" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-04 13:55:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-04T13:55:00+08:00">2026-06-04</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>873</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/" itemprop="url" title="实用工具及网站">实用工具及网站</a></h3><div class="excerpt"># 文献翻译
+pdf2zh项目（开箱即用版）
+# 网盘
+MEGA云盘：无广告，上传下载不限速，外网下行带宽2Mbps左右，内网下行带宽100Mbps左右。下载一个文件的平均速度在30Mbps以上，不限制上传文件大小、类型，注重隐私安全性
+# 日程管理
+Outlook：windows自带
+# 浏览器插件
+沉浸式翻译
+豆包，浏览器 AI 助手
+篡改猴
+# 科学上网
+扬帆云
+# Git管理
+fork：可视化Git管理工具
+# 绘图工具
+Excalidraw：在线白板，可以便捷绘制示例图形
+NN SVG：神经网络绘制
+# Latex公式编辑
+mathcheap：OCR识别生成Latex公式，美中不足的</div><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/" class="btn" itemprop="url" title="实用工具及网站">more...</a></div></article></div></div><nav class="pagination"><div class="inner"><a class="extend prev" rel="prev" href="/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Blogger" src="/assets/avatar.jpg"/><p class="name" itemprop="name">Blogger</p><div class="description" itemprop="description">A blog built with Hexo and ShokaX theme</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">26</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/chenlan7064" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;chenlan7064"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"><a href="/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/page/3/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/05/2026-06-05-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/">机器学习随笔</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/">【实用工具推荐】AI 研究与笔记工具-NotebookLM</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/05/2026-06-05-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%A3%E8%AF%BB/">线性回归中均方误差损失函数的概率论解读</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/" title="分类于#生涯规划">#生涯规划</a></div><span><a href="/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/">【生涯规划】硕士三年整体时间线规划</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-6.14%E9%9A%8F%E7%AC%94/">6.14随笔</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/01/2026-06-01-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E9%9A%8F%E7%AC%94/">线性代数随笔</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/">科研扫盲-顶会顶刊</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/">实用工具及网站</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80%E3%80%91%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB%E4%B9%A6%E7%9B%AE/">【数理基础】推荐阅读书目</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Blogger @ Tensika的博客小屋</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">46k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">42 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: false,
+    path: `page/2/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>

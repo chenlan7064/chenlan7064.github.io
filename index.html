@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="My Blog" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="My Blog" type="application/atom+xml"><link rel="alternate" type="application/json" title="My Blog" href="https://chenlan7064.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-TPOTXWTU.js"></link><link rel="modulepreload" href="/js/copy-tex-VNKFBXXM.js"></link><link rel="modulepreload" href="/js/post-AL6ZM6FN.js"></link><link rel="modulepreload" href="/js/chunk-WQ2AW3GB.js"></link><link rel="modulepreload" href="/js/index.esm-4IGUKTUL.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-RTVQBU5X.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="https://api.ixiaowai.cn/gqapi/gqapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.ixiaowai.cn/gqapi/gqapi.php" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=dongman" as="image" fetchpriority="high"><link rel="preload" href="https://api.btstu.cn/sjbz/api.php?lx=fengjing" as="image" fetchpriority="high"><link rel="preload" href="https://api.paugram.com/wallpaper/" as="image" fetchpriority="high"><link rel="preload" href="https://api.paugram.com/wallpaper/" as="image" fetchpriority="high"><meta name="keywords" content="blog, hexo, shokax"/><meta name="description" content="A blog built with Hexo and ShokaX theme"/><link rel="canonical" href="https://chenlan7064.github.io/"><link rel="stylesheet" href="/css/page.css?v=0.5.4"><title>Tensika的博客小屋 = My Blog = Powered by ShokaX</title>
+<style>
+  /* ====== 基础：安全兜底色（不支持渐变时也能看清） ====== */
+  .post .md code,
+  .post .article code,
+  .md code {
+    position: relative;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: "Cascadia Code", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.88em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    /* 兜底色——看不支持渐变的浏览器 */
+    color: #c7254e;
+    background: #f9f2f4;
+    border: 1px solid rgba(180, 130, 150, 0.25);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  /* ====== 渐变字：仅在现代浏览器生效 ====== */
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #b88a9a  0%,  #a893b8  8%,  #8faac8 17%,
+          #e8d5e0 25%,  #c9a8b8 33%,  #b0c0d8 42%,
+          #e0c8d4 50%,  #b0c0d8 58%,  #c9a8b8 67%,
+          #e8d5e0 75%,  #8faac8 83%,  #a893b8 92%,
+          #b88a9a 100%),
+        linear-gradient(145deg, #e0b0c0, #c9b8d4, #a8c8e8, #c9b8d4, #e0b0c0);
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+      background-origin: padding-box, border-box;
+    }
+  }
+
+  /* ====== hover：流光旋转 ====== */
+  @keyframes diamond-shift {
+    0%   { background-position: 0% 0%, 0% 0%;   }
+    100% { background-position: 100% 0%, 0% 0%; }
+  }
+
+  .md code:hover {
+    animation: diamond-shift 3s linear infinite;
+    box-shadow:
+      0 0 0 1px rgba(180, 140, 170, 0.35),
+      0 2px 8px  rgba(160, 130, 160, 0.2);
+  }
+
+  /* ====== 光点扫过 ====== */
+  .md code::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -60%;
+    width: 35%;
+    height: calc(100% + 2px);
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,0.5) 35%,
+      rgba(255,255,255,0.8) 50%,
+      rgba(255,255,255,0.5) 65%,
+      transparent 100%);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes diamond-glint {
+    0%   { left: -60%; }
+    100% { left: 110%; }
+  }
+
+  .md code:hover::after {
+    opacity: 1;
+    animation: diamond-glint 1.4s ease-in-out infinite;
+  }
+
+  /* ====== 暗色模式 ====== */
+  [data-theme="dark"] .md code,
+  [data-theme="dark"] .post .md code {
+    color: #d0c0f0;
+    background: rgba(30, 25, 40, 0.9);
+    border-color: rgba(140, 120, 200, 0.35);
+    text-shadow:
+      0 0 4px  rgba(180, 160, 220, 0.5),
+      0 0 8px  rgba(140, 180, 220, 0.3);
+  }
+
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    [data-theme="dark"] .md code {
+      color: transparent;
+      -webkit-background-clip: text, border-box;
+      background-clip: text, border-box;
+      background-image:
+        linear-gradient(160deg,
+          #c0b0e0  0%,  #90c8e8  8%,  #e8d8ff 17%,
+          #a8c8e8 25%,  #c8b8e8 33%,  #e0d0f0 42%,
+          #ffffff 50%,  #e0d0f0 58%,  #c8b8e8 67%,
+          #a8c8e8 75%,  #e8d8ff 83%,  #90c8e8 92%,
+          #c0b0e0 100%),
+        linear-gradient(145deg, rgba(120,100,180,0.5), rgba(80,150,200,0.5), rgba(150,100,180,0.5));
+      background-size: 300% 100%, 100% 100%;
+      background-position: 0% 0%, 0% 0%;
+    }
+  }
+
+  [data-theme="dark"] .md code:hover {
+    box-shadow:
+      0 0 2px  rgba(160, 140, 220, 0.5),
+      0 0 10px rgba(120, 160, 210, 0.35);
+    text-shadow:
+      0 0 6px  rgba(200, 180, 240, 0.8),
+      0 0 14px rgba(160, 200, 240, 0.5);
+  }
+
+  [data-theme="dark"] .md code::after {
+    background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(200,180,255,0.3) 35%,
+      rgba(220,200,255,0.65) 50%,
+      rgba(200,180,255,0.3) 65%,
+      transparent 100%);
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.2"><style>body{overflow-y:scroll!important}body.fullscreen{overflow:hidden!important}#loading{pointer-events:none}footer#footer{position:relative!important;z-index:2!important}main{padding-bottom:3rem!important}</style></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="pagefind_mount"></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><a class="logo" href="/" rel="start"><p class="artboard">Tensika的博客小屋</p><h1 class="title" itemprop="name headline">My Blog</h1></a><p class="meta" itemprop="description">= Powered by ShokaX =</p></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">Tensika的博客小屋</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/gqapi/gqapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.ixiaowai.cn/gqapi/gqapi.php&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=dongman&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.btstu.cn/sjbz/api.php?lx=fengjing&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.paugram.com/wallpaper/&quot;);"></li><li class="item" style="background-image: url(&quot;https://api.paugram.com/wallpaper/&quot;);"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="index wrap"><h2 class="divider">文章列表</h2><div class="segments posts"><article class="item"><div class="cover"><a href="/2026/07/19/2026-07-19-wsl%E7%AE%80%E7%95%A5%E6%8C%87%E5%8D%97/" itemprop="url" title="WSL简略指南"><img loading="lazy" decoding="async" src="https://api.ixiaowai.cn/api/api.php" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-07-19 21:20:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-07-19T21:20:00+08:00">2026-07-19</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.2k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/07/19/2026-07-19-wsl%E7%AE%80%E7%95%A5%E6%8C%87%E5%8D%97/" itemprop="url" title="WSL简略指南">WSL简略指南</a></h3><div class="excerpt">WSL是Windows Subsystem for Linux（Windows 的 Linux 子系统） 的缩写，是微软为 Windows 系统开发的一项功能，核心作用是让你不用虚拟机、不用双系统，就能在 Windows 上直接运行原生的 Linux 环境和工具。
+# 1.安装
+在 Windows PowerShell（管理员）里跑：
+wsl --install
+默认装 Ubuntu，重启后自动进入设置用户名密码。完成后可用 wsl -l -v 查看已安装的发行版。
+# 2.WSL 基本使用
+# 查看你的 WSL 版本和发行版
+wsl -l -v          # 在 Windows 终端</div><a href="/2026/07/19/2026-07-19-wsl%E7%AE%80%E7%95%A5%E6%8C%87%E5%8D%97/" class="btn" itemprop="url" title="WSL简略指南">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/" itemprop="url" title="Tron波场链入门"><img loading="lazy" decoding="async" src="https://api.paugram.com/wallpaper/" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-07-17 14:02:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-07-17T14:02:00+08:00">2026-07-17</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>5.4k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>5 分钟</span></span></div><h3><a href="/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/" itemprop="url" title="Tron波场链入门">Tron波场链入门</a></h3><div class="excerpt"># 基础概念扫盲
+智能合约：一段代码 + 一个数据库，部署在链上，自动运行，没人能改。USDT 合约部署后，连 Tether 公司自己都不能偷偷改你的余额。类比来说，智能合约就像是一台自动售货机，只要投入硬币就能获取可乐，没有人站在售货机后操作（没有中心化的后台管理），机器按写死的规则自动执行。
+共识协议：决定谁来记账，避免链上节点数据不一致的方案。以TRON链采用的DPoS共识为例，所有持币者投票选出27个“记账员”（超级代表SR），只有这27个人轮流记账（每3s一次，每次产生一个新的区块），其他几千个节点只是复制结果（拼公信度）。DPoS的去中心化程度远不如PoW，但是牺牲了去中心化程度换</div><div class="meta footer"><span><a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" itemprop="url" title="#区块链"><i class="ic i-flag"></i>#区块链</a></span></div><a href="/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/" class="btn" itemprop="url" title="Tron波场链入门">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/07/15/2026-07-15-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-skills-dependency-aware-structural-retrieval-for-massive-agent-skills/" itemprop="url" title="【论文精读】Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=fengjing" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-07-15 11:52:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-07-15T11:52:00+08:00">2026-07-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>3.1k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>3 分钟</span></span></div><h3><a href="/2026/07/15/2026-07-15-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-skills-dependency-aware-structural-retrieval-for-massive-agent-skills/" itemprop="url" title="【论文精读】Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills">【论文精读】Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills</a></h3><div class="excerpt">随着LLM agent的skills库的增长，LLM agent的一大核心挑战从是否使用、何时使用以及如何正确格式化调用某个skills变为了如何找出完成任务所需的最接近skills集合。两种常见策略被应用于处理skills库，一种是基础技能（Vanilla Skills），将整个skills库前置到上下文窗口中，这种方法的优点是简单，但仅适用于小型skills库，随着skills库的增长，token成本也会随着注入skills库的增长而同步线性增长，且过载上下文也容易导致模型忽略关键领域约束。另一种方法是基于向量的检索（Vector Skills），通过检索语义相近的skills来提升效率，</div><a href="/2026/07/15/2026-07-15-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-skills-dependency-aware-structural-retrieval-for-massive-agent-skills/" class="btn" itemprop="url" title="【论文精读】Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/" itemprop="url" title="【生涯规划】硕士三年整体时间线规划"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=fengjing" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-07-08 11:08:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-07-08T11:08:00+08:00">2026-07-08</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>126</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/" itemprop="url" title="【生涯规划】硕士三年整体时间线规划">【生涯规划】硕士三年整体时间线规划</a></h3><div class="excerpt">研一，据说可以直接修完课程
+目前，主要读了GAD和LLM图推理相关的论文，勉强可以理解和复现，但是做不到掌握代码，也无法改良和自己写
+毕业要求一篇专利进入实质性审查，不要求论文，但论文可以在评奖评优及实习时有帮助，最好尽可能在实习前弄出一篇论文
+</div><div class="meta footer"><span><a href="/categories/%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92/" itemprop="url" title="#生涯规划"><i class="ic i-flag"></i>#生涯规划</a></span></div><a href="/2026/07/08/2026-07-08-%E3%80%90%E7%94%9F%E6%B6%AF%E8%A7%84%E5%88%92%E3%80%91%E7%A1%95%E5%A3%AB%E4%B8%89%E5%B9%B4%E6%95%B4%E4%BD%93%E6%97%B6%E9%97%B4%E7%BA%BF%E8%A7%84%E5%88%92/" class="btn" itemprop="url" title="【生涯规划】硕士三年整体时间线规划">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/" itemprop="url" title="【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models"><img loading="lazy" decoding="async" src="https://api.paugram.com/wallpaper/" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-07-07 09:05:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-07-07T09:05:00+08:00">2026-07-07</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.6k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>2 分钟</span></span></div><h3><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/" itemprop="url" title="【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models">【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models</a></h3><div class="excerpt">LLM在逻辑推理和代数查询问题上，受限于生成式Transformer模型自左向右、逐token预测的机制，直接借助简化的提示完成高难度任务时常导致结果偏差或谬误。因而，聚焦于让LLM拆解复杂任务实现分步推理，诞生了诸如思维链（CoT）、思维树（ToT）、思维图（GoT）、思维森林（FoT）等一系列创新推理框架
+逻辑推理从根本上可以划分为三种范式：演绎推理、归纳推理和溯因推理。演绎推理的研究在上述推理框架诞生后已经取得了显著的进展，归纳推理则是大规模预训练所建立的内在能力。但溯因推理领域的研究依然空白。考虑到溯因推理是许多高利害现实场景决策的基石，本研究旨在建立一个针对溯因任务动态和非单调特性量</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/07/07/2026-07-07-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-states-solving-abductive-tasks-with-large-language-models/" class="btn" itemprop="url" title="【论文精读】Graph of States: Solving Abductive Tasks with Large Language Models">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/07/03/2026-07-04-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-chain-of-thought-augmenting-large-language-models-by-reasoning-on-graphs/" itemprop="url" title="【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=dongman" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-07-03 10:11:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-07-03T10:11:00+08:00">2026-07-03</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.8k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>3 分钟</span></span></div><h3><a href="/2026/07/03/2026-07-04-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-chain-of-thought-augmenting-large-language-models-by-reasoning-on-graphs/" itemprop="url" title="【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs">【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs</a></h3><div class="excerpt">LLM主要存在两方面的问题，幻觉与知识截止。幻觉指LLM自信地做出错误的判断，知识截止则是LLM的知识仅限于模型训练时的输入数据。**检索增强生成（RAG，2020）**通过构建外部知识库，对prompt进行增强，摆脱了知识截止的限制，增强了模型在知识密集型任务场景下的生成能力
+
+知识密集型任务，指对相关领域专业知识依赖度极高，仅靠模式识别或句法分析搞不定，必须调动大量先验知识的任务。
+
+RAG的工作流程可以简单划分为四个部分，预处理阶段，收集相关领域的专业知识数据，并对收集到的数据进行清洗，去除噪声、重复项和无关信息，确保数据的质量和准确性。将清洗后的知识构建成知识库，这通常包括将文本切割成</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/07/03/2026-07-04-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-chain-of-thought-augmenting-large-language-models-by-reasoning-on-graphs/" class="btn" itemprop="url" title="【论文精读】Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/" itemprop="url" title="【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=dongman" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-29 10:39:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-29T10:39:00+08:00">2026-06-29</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>955</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/" itemprop="url" title="【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection">【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection</a></h3><div class="excerpt">区块链交易网络具有大规模、有向、具有时序性的特征。由于新型加密货币技术和攻击策略的发展，区块链上的异常行为会不断演变，导致基于历史数据训练的模型在实际部署中面对严重的OOD（分布外）问题
+现有的常规GAD方法大多数仍然依赖于监督学习，且对分布偏移敏感。本研究发现，当前已有的工作存在两个尚未解决的挑战：（i）现有的图异常检测方法很少显式地对时序模式进行建模, 限制了其捕捉不断演化的对抗模式的能力;(ii) 监督学习方法难以适应分布外设置下的结构变化。
+基于以上挑战，本研究提出了一种时间模式感知的图测试时自适应(TEMG-TTA)框架，以实现针对OOD区块链异常检测的显式时间模式感知。该研究的主要</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/" class="btn" itemprop="url" title="【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/" itemprop="url" title="【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective"><img loading="lazy" decoding="async" src="https://api.btstu.cn/sjbz/api.php?lx=dongman" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-22 23:03:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-22T23:03:00+08:00">2026-06-22</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>952</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/" itemprop="url" title="【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective">【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective</a></h3><div class="excerpt">现有GAD技术旨在优化整体的检测能力，然而并未充分关注对结构不平衡的鲁棒性。真实GAD应用场景的图分布往往存在着长尾效应，即图中的绝大部分节点度数较低。真实欺诈场景中，更多出现的是低度异常，例如身份冒充攻击更多针对普通人而非名人、空壳公司的金融欺诈实施一次后就终止业务。本研究的出发点，是在不影响头部异常检测性能的前提下，提高尾部异常的检测能力。
+该研究的贡献可以主要归纳为三点：
+
+通过详细的统计分析，从结构不平衡的角度出发，揭示了现有工作在识别尾部异常方面的不良表现
+提出新算法AD-GCL，引入邻居修剪以过滤头部节点的噪声边,并通过将头部节点与伪造的尾部节点对齐,增强了模型在检测真实尾部节点时</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection-1/" class="btn" itemprop="url" title="【论文精读】Revisiting Graph Contrastive Learning on Anomaly Detection: A Structural Imbalance Perspective">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/" itemprop="url" title="【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection"><img loading="lazy" decoding="async" src="https://api.ixiaowai.cn/gqapi/gqapi.php" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-22 13:37:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-22T13:37:00+08:00">2026-06-22</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>1.5k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>1 分钟</span></span></div><h3><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/" itemprop="url" title="【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection">【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection</a></h3><div class="excerpt">近几年，基于GNN的监督式GFD方法取得了显著进展，一个主流研究热点是解决欺诈者引入的异质性问题。由于欺诈者倾向于通过与正常用户连结以伪装自身，传统GNN在真实GFD场景应用时，会由于消息传递的平滑效应导致GFD性能不理想。删除边或谱图神经网络等方法，虽然可以一定程度减弱异质性的影响，但严重依赖于需要依靠大量人力获取的标签来建模异质性属性，难以应用于现实场景。
+GAD是GFD的超集，GAD的一些方法也被应用于GFD，但是相对于通用GAD，GFD的异质性更强，异常模式更难以识别。近期工作尝试通过估计伪标签迭代降低图结构的异质性，然而，迭代优化和多轮伪标签计算限制了时间和内存效率
+有效无监督GFD</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/" class="btn" itemprop="url" title="【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection">more...</a></div></article><article class="item"><div class="cover"><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/" itemprop="url" title="【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono"><img loading="lazy" decoding="async" src="https://api.ixiaowai.cn/api/api.php" alt="article cover"></a></div><div class="info"><div class="meta"><span class="item" title="创建时间：2026-06-17 10:50:00"><span class="icon"><i class="ic i-calendar"></i></span><time itemprop="dateCreated datePublished" datetime="2026-06-17T10:50:00+08:00">2026-06-17</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span>2.7k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span>2 分钟</span></span></div><h3><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/" itemprop="url" title="【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></h3><div class="excerpt">1. 研究动力与核心挑战
+该框架旨在解决传统机器学习方法和现有图神经网络 GNN的局限性。传统机器学习方法擅长捕捉属性特征模式，但完全忽略了图中节点之间的关联信息，导致在处理结构化数据时性能欠佳。现有GNN方法擅长通过消息传递捕捉关联模式，但在处理节点属性时存在严重问题。它们常将不同类型或不同含义的属性进行混合或平均，导致错误的语义表达**。例如，对“60岁（老人）”和“6岁（儿童）”的特征值求平均，会得到“33岁（中年人）”，这在欺诈识别中完全失去了原有的判别意义。尽管已经存在传统机器学习和现有图神经网络GNN的结合方案，但这些方案并非端到端的实现方案，属性模式的学习与关联模式的提取往往是分</div><div class="meta footer"><span><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" itemprop="url" title="#论文精读"><i class="ic i-flag"></i>#论文精读</a></span></div><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/" class="btn" itemprop="url" title="【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono">more...</a></div></article></div></div><nav class="pagination"><div class="inner"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="ic i-angle-right" aria-label="下一页"></i></a></div></nav></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"></div><div class="related panel pjax" data-title="系列文章"></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="Blogger" src="/assets/avatar.jpg"/><p class="name" itemprop="name">Blogger</p><div class="description" itemprop="description">A blog built with Hexo and ShokaX theme</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">26</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">4</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/chenlan7064" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;chenlan7064"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/page/2/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/05/2026-06-05-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%AD%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87%E8%AE%BA%E8%A7%A3%E8%AF%BB/">线性回归中均方误差损失函数的概率论解读</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/22/2026-06-22-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91a-label-free-heterophily-guided-approach-for-unsupervised-graph-fraud-detection/">【论文精读】A Label-Free Heterophily-Guided Approach for Unsupervised Graph Fraud Detection</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="分类于#区块链">#区块链</a></div><span><a href="/2026/07/17/2026-07-17-tron%E6%B3%A2%E5%9C%BA%E9%93%BE%E5%85%A5%E9%97%A8/">Tron波场链入门</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/07/15/2026-07-15-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91graph-of-skills-dependency-aware-structural-retrieval-for-massive-agent-skills/">【论文精读】Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/04/2026-06-04-%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%BD%91%E7%AB%99/">实用工具及网站</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/13/2026-06-13-%E3%80%90%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E3%80%91ai-%E7%A0%94%E7%A9%B6%E4%B8%8E%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7-notebooklm/">【实用工具推荐】AI 研究与笔记工具-NotebookLM</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/29/2026-06-29-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91revisiting-graph-contrastive-learning-on-anomaly-detection-a-structural-imbalance-perspective/">【论文精读】Temporal Motif-aware Graph Test-time Adaptation for OOD Blockchain Anomaly Detection</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" title="分类于#论文精读">#论文精读</a></div><span><a href="/2026/06/17/2026-06-17-%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%91global-attribute-association-pattern-aggregation-for-graph-fraud-detection-mono/">【论文精读】Global attribute-association pattern aggregation for graph fraud detection-mono</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2026/06/12/2026-06-12-%E7%A7%91%E7%A0%94%E6%89%AB%E7%9B%B2-%E9%A1%B6%E4%BC%9A%E9%A1%B6%E5%88%8A/">科研扫盲-顶会顶刊</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%85%A5%E9%97%A8/" title="分类于#入门">#入门</a></div><span><a href="/2026/05/30/2026-05-30-claude-deepseek-v4%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/">Claude+deepseek v4安装部署教程</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2022 -<span itemprop="copyrightYear">2026</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">Blogger @ Tensika的博客小屋</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">46k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">42 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: false,
+    path: ``,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.4" type="module" fetchpriority="high" defer></script></body></html>
